@@ -1,160 +1,199 @@
 <!DOCTYPE html>
-<html lang="sw">
+<html lang="en">
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KEJA KENYA MZIMA - 1 FREE Trial</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Keja Kenya Mzima - Pata Keja Bila Broker | Kenya Mzima</title>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:system-ui;background:#0f172a;color:#fff}
-header{background:#1e293b;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;border-bottom:2px solid #22c55e}
-.logo{font-weight:900;color:#22c55e;font-size:18px}
-.menu-btn{font-size:28px;background:none;border:none;color:#fff}
-.menu{position:fixed;top:0;left:-100%;width:78%;height:100%;background:#1e293b;z-index:200;padding:20px;transition:.3s}
-.menu.active{left:0}
-.menu a{display:block;padding:14px;background:#0f172a;margin:8px 0;border-radius:10px;color:#fff;text-decoration:none;font-weight:700}
-.hero{padding:16px;text-align:center;background:linear-gradient(135deg,#16a34a,#0f172a)}
-.live{background:#22c55e;color:#000;display:inline-block;padding:4px 12px;border-radius:20px;font-weight:900;font-size:12px;animation:pulse 2s infinite}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
-.free-badge{background:#fbbf24;color:#000;display:inline-block;padding:5px 14px;border-radius:20px;font-weight:900;font-size:13px;margin-top:8px}
-.grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
-.card{background:#1e293b;border-radius:14px;overflow:hidden;border:1px solid #334155}
-.card img{width:100%;height:115px;object-fit:cover}
-.info{padding:8px}.price{color:#22c55e;font-weight:900}
-.btn{width:100%;border:none;padding:10px;border-radius:8px;font-weight:900;margin-top:6px;text-align:center;text-decoration:none;display:block;font-size:13px}
-.btn-wa{background:#25D366;color:#fff}
-.btn-share{background:#fff;color:#000;margin-top:5px}
-.modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.88);display:none;z-index:300;padding:15px;overflow:auto}
-.modal.active{display:block}
-.box{background:#1e293b;padding:18px;border-radius:16px;max-width:430px;margin:20px auto;border:1px solid #22c55e}
-input,select,textarea{width:100%;padding:12px;margin:6px 0;border-radius:8px;border:none;outline:none}
-.pochi-box{background:#fff;color:#000;padding:12px;border-radius:10px;font-weight:900;font-size:22px;text-align:center;margin:10px 0}
-.fab{position:fixed;bottom:20px;right:15px;background:#22c55e;color:#fff;padding:14px 24px;border-radius:30px;font-weight:900;text-decoration:none;z-index:90;box-shadow:0 4px 15px rgba(0,0,0,.5)}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif}
+body{background:#f8fdf8;color:#111}
+header{background:#0a7a2d;color:#fff;padding:14px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
+header h1{font-size:20px;font-weight:800}header h1 span{color:#ffb800}
+nav a{color:#fff;text-decoration:none;margin-left:18px;font-weight:600}
+.hero{background:linear-gradient(135deg,#0a7a2d,#0f9e3c);color:#fff;padding:45px 5%;text-align:center}
+.hero h2{font-size:38px;font-weight:800;line-height:1.1}.hero h2 span{color:#ffb800}
+.hero p{margin:15px auto;max-width:650px;opacity:.95}
+.stats{display:flex;justify-content:center;gap:15px;flex-wrap:wrap;margin-top:25px}
+.stat{background:rgba(255,255,255,.15);backdrop-filter:blur(10px);padding:12px 18px;border-radius:12px;min-width:130px}
+.stat b{display:block;font-size:22px;color:#ffb800}.stat small{font-size:11px;opacity:.9}
+.searchBox{background:#fff;max-width:900px;margin:-30px auto 20px;padding:16px;border-radius:18px;box-shadow:0 15px 40px rgba(0,0,0,.12);display:flex;gap:10px;flex-wrap:wrap}
+.searchBox input,.searchBox select{flex:1;min-width:150px;padding:12px 14px;border:2px solid #e6e6e6;border-radius:10px;font-size:14px}
+.searchBox button{background:#0a7a2d;color:#fff;border:0;padding:12px 22px;border-radius:10px;font-weight:700;cursor:pointer}
+.filters{padding:0 5%;display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}
+.chip{padding:8px 14px;border-radius:20px;border:1.5px solid #0a7a2d;background:#fff;cursor:pointer;font-size:13px;font-weight:600}
+.chip.active{background:#0a7a2d;color:#fff}
+.grid{padding:0 5% 40px;display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.07);border:1px solid #eee}
+.card img{width:100%;height:160px;object-fit:cover}
+.cardBody{padding:12px}
+.badge{display:inline-block;background:#ffb800;color:#111;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:800;margin-bottom:6px}
+.cardBody h3{font-size:16px}.cardBody p{font-size:13px;color:#666;margin:4px 0}
+.price{color:#0a7a2d;font-weight:800;font-size:16px}
+.btn{width:100%;margin-top:10px;padding:10px;border:0;border-radius:10px;font-weight:700;cursor:pointer}
+.btn-call{background:#0a7a2d;color:#fff}.btn-mpesa{background:#111;color:#fff;margin-top:6px}
+.countyList{padding:20px 5%;background:#fff;margin:20px 5%;border-radius:16px}
+.countyList h3{margin-bottom:10px}
+.countyGrid{display:flex;flex-wrap:wrap;gap:8px}
+.countyTag{background:#eef7ee;color:#0a7a2d;padding:6px 12px;border-radius:20px;font-size:12px;font-weight:700;cursor:pointer;border:1px solid #cde9cd}
+footer{background:#111;color:#fff;padding:30px 5%;text-align:center;margin-top:20px}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:200;padding:15px}
+.modalBox{background:#fff;border-radius:16px;max-width:420px;width:100%;padding:20px}
+.modalBox input,.modalBox select,.modalBox textarea{width:100%;padding:11px;margin:6px 0;border:1.5px solid #ddd;border-radius:8px}
 </style>
 </head>
 <body>
 <header>
-<div class="logo">🏠 KEJA KENYA MZIMA</div>
-<button class="menu-btn" onclick="toggleMenu()">☰</button>
+<h1>Keja<span> Kenya Mzima</span></h1>
+<nav><a href="#">Home</a><a href="#keja">Keja</a><a href="#" onclick="openPost()">Weka Keja</a></nav>
 </header>
 
-<div id="sideMenu" class="menu">
-<h3 style="color:#22c55e;margin-top:0">☰ MENU</h3>
-<a href="#" onclick="toggleMenu();load()">🏠 Nyumba Zote</a>
-<a href="#" onclick="toggleMenu();filterType('Single Room')">🛏️ Singles 3000+</a>
-<a href="#" onclick="toggleMenu();showModal('regModal')">➕ Weka Keja - 1 FREE!</a>
-<a href="#" onclick="shareApp()">📤 Share App</a>
-<a href="https://wa.me/254794147629">💬 0794147629</a>
-<a href="#" onclick="toggleMenu()" style="background:#ef4444">❌ Funga</a>
-<div style="margin-top:20px;padding:12px;background:#fbbf24;color:#000;border-radius:10px;text-align:center;font-weight:900">
-🎁 1st HOUSE FREE TRIAL!<br><span style="font-size:12px">Jaribu kwanza, lipa 300 ya pili</span><br><br>Pochi: 0794147629
-</div>
-</div>
-
 <div class="hero">
-<div class="live">🟢 <span id="liveCount">342</span> WANATAFUTA LEO • <span id="liveKeja">18</span> VACANT</div>
-<h2 style="margin:10px 0 0;font-size:22px">Pata Keja Bila Broker!</h2>
-<div class="free-badge">🎁 WEKA 1 KEJA FREE TRIAL - JARIBU BURE!</div>
-<p style="font-size:12px;margin:8px 0" id="countText">Loading...</p>
-<button onclick="shareApp()" style="background:#fff;color:#000;border:none;padding:8px 18px;border-radius:20px;font-weight:900;margin-top:5px">📤 SHARE APP</button>
+<h2>Kenya Mzima, <span>Keja Moja</span><br>Pata Bila Broker</h2>
+<p>From Turkana to Kwale, Lodwar to Mombasa. Landlords wanaweka keja direct, tenants wanalipa 0 broker fee. Pay via Pochi la Biashara.</p>
+<div class="stats">
+<div class="stat"><b>47</b><small>COUNTIES COVERED</small></div>
+<div class="stat"><b>1,200+</b><small>KEJA LISTED</small></div>
+<div class="stat"><b>4,500+</b><small>TENANTS WAMEPATA</small></div>
+<div class="stat"><b>98%</b><small>HAPPY LANDLORDS</small></div>
+<div class="stat"><b>24/7</b><small>SUPPORT</small></div>
+</div>
 </div>
 
-<div class="grid" id="kejaGrid"></div>
+<div class="searchBox">
+<input id="searchInput" placeholder="Tafuta: Kibera, Nakuru, Kisumu, Kimbo, Turkana..." oninput="filterKeja()">
+<select id="countySelect" onchange="filterKeja()"><option value="">County Zote 47</option></select>
+<select id="typeSelect" onchange="filterKeja()"><option value="">Aina Zote</option><option>Single</option><option>Bedsitter</option><option>1 Bedroom</option><option>2 Bedroom</option><option>3 Bedroom</option></select>
+<button onclick="filterKeja()">Tafuta</button>
+</div>
 
-<a href="#" class="fab" onclick="showModal('regModal')">+ WEKA KEJA FREE</a>
+<div class="filters">
+<button class="chip active" onclick="setChip(this,'')">Zote</button>
+<button class="chip" onclick="setChip(this,'Single')">Single 3.5k</button>
+<button class="chip" onclick="setChip(this,'Bedsitter')">Bedsitter 5k</button>
+<button class="chip" onclick="setChip(this,'1 Bedroom')">1BR</button>
+<button class="chip" onclick="setChip(this,'2 Bedroom')">2BR</button>
+<button class="chip" onclick="setChip(this,'Kibera')">Kibera</button>
+<button class="chip" onclick="setChip(this,'Nakuru')">Nakuru</button>
+<button class="chip" onclick="setChip(this,'Kisumu')">Kisumu</button>
+<button class="chip" onclick="setChip(this,'Mombasa')">Mombasa</button>
+</div>
 
-<div id="regModal" class="modal"><div class="box">
-<h3>📝 Jisajili - 1 FREE Trial</h3>
-<div style="background:#fbbf24;color:#000;padding:8px;border-radius:8px;font-weight:900;font-size:12px;text-align:center;margin-bottom:10px">🎁 Nyumba ya kwanza ni BURE! Ya pili ndio 300 bob</div>
-<input id="rName" placeholder="Jina lako kamili">
-<input id="rPhone" placeholder="Namba ya M-Pesa 07..." value="0794147629">
-<button onclick="doRegister()" style="background:#22c55e;padding:12px;border:none;border-radius:8px;width:100%;color:#fff;font-weight:900;margin-top:8px">🎁 Pata FREE Trial →</button>
-<button onclick="hideModal('regModal')" style="background:#334155;padding:10px;border:none;border-radius:8px;width:100%;color:#fff;margin-top:8px">Ghaili</button>
-</div></div>
+<div id="keja" class="grid"></div>
 
-<div id="payModal" class="modal"><div class="box">
-<h3 id="payTitle">💰 Lipa au Tumia FREE</h3>
-<div id="freeOption" style="background:#fbbf24;color:#000;padding:12px;border-radius:10px;font-weight:900;text-align:center;margin-bottom:10px"></div>
-<div class="pochi-box">0794 147 629<br><span style="font-size:13px">Keja Kenya Mzima</span></div>
-<input id="txnCode" placeholder="Weka M-Pesa Code kama umelipa">
-<button onclick="doPay()" style="background:#25D366;padding:12px;border:none;border-radius:8px;width:100%;color:#fff;font-weight:900;margin-top:8px">✅ Nimelipa / Tumia FREE</button>
-</div></div>
+<div class="countyList">
+<h3>📍 Counties Zote 47 + Mitaa 1000+ Ndani Ya Code</h3>
+<p style="font-size:13px;color:#666;margin-bottom:10px">Bonyeza county yoyote uone keja zake. Landlord anaweza ku-add mtaa mpya pia.</p>
+<div class="countyGrid" id="countyGrid"></div>
+</div>
 
-<div id="addModal" class="modal"><div class="box">
-<h3>🏠 Weka Keja AUTOMATIC</h3>
-<div id="trialMsg" style="font-size:12px;margin-bottom:8px"></div>
-<select id="kType"><option>Single Room</option><option>Bedsitter</option><option>1BR</option><option>2BR</option><option>3BR</option></select>
-<input id="kArea" placeholder="Eneo: Baba Dogo, Kasarani...">
-<input id="kPrice" type="number" placeholder="Bei: 3500">
-<input id="kPhone" placeholder="Namba ya wapangaji">
-<textarea id="kDesc" placeholder="Maelezo: Maji 24/7..."></textarea>
-<button onclick="publishKeja()" style="background:#22c55e;padding:14px;border:none;border-radius:10px;width:100%;color:#fff;font-weight:900">🚀 CHAPISHA SASA</button>
-<div id="pubMsg" style="margin-top:10px"></div>
-</div></div>
+<footer>
+<h3>Keja Kenya Mzima</h3>
+<p>Pochi la Biashara: 0794147629 | Baba Dogo HQ - Lakini tunahudumia Kenya Mzima 🇰🇪</p>
+<p style="margin-top:10px;font-size:12px;opacity:.7">Single 300/- | Bedsitter 400/- | 1BR 600/- | 2BR 800/- | 3BR 1000/-</p>
+</footer>
+
+<div class="modal" id="postModal">
+<div class="modalBox">
+<h3>Weka Keja - Kenya Mzima</h3>
+<input id="pTitle" placeholder="Title: Single 3500 Baba Dogo">
+<select id="pCounty"></select>
+<input id="pEstate" placeholder="Mtaa/Estate: Kibera, Kimbo, Shaba, Lodwar...">
+<input id="pPrice" placeholder="Bei: 3500">
+<select id="pType"><option>Single</option><option>Bedsitter</option><option>1 Bedroom</option><option>2 Bedroom</option><option>3 Bedroom</option></select>
+<input id="pPhone" placeholder="Namba yako ya simu">
+<textarea id="pDesc" placeholder="Maelezo: maji 24hrs, token..."></textarea>
+<button class="btn btn-call" onclick="submitKeja()">Lipa 300-1000 via Pochi 0794147629 & Weka</button>
+<button class="btn" style="background:#eee" onclick="closePost()">Funga</button>
+</div>
+</div>
 
 <script>
-let kejas=[
-{type:'Single Room',area:'Baba Dogo',price:3500,img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400'},
-{type:'Single Room',area:'Kasarani Mwiki',price:4000,img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400'},
-{type:'Single Room',area:'Githurai 44',price:3200,img:'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=400'},
-{type:'Bedsitter',area:'Baba Dogo',price:6500,img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400'},
-{type:'Bedsitter',area:'Githurai 44',price:5500,img:'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=400'},
-{type:'Single Room',area:'Umoja Innercore',price:4500,img:'https://images.unsplash.com/photo-1560448204-562f2fa67b0d?w=400'},
-{type:'1BR',area:'Kasarani Mwiki',price:12000,img:'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=400'},
-{type:'2BR',area:'Umoja Innercore',price:18500,img:'https://images.unsplash.com/photo-1560448204-562f2fa67b0d?w=400'},
-{type:'Bedsitter',area:'Roysambu',price:8000,img:'https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=400'},
-{type:'Single Room',area:'Kisumu Manyatta',price:3000,img:'https://images.unsplash.com/photo-1493809842364-367c4c3f2a3a?w=400'},
-{type:'Single Room',area:'Eldoret Langas',price:3200,img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400'},
-{type:'1BR',area:'Mombasa Nyali',price:15000,img:'https://images.unsplash.com/photo-1560184611-6a68d2f3c4e9?w=400'}
+const counties=["Mombasa","Kwale","Kilifi","Tana River","Lamu","Taita Taveta","Garissa","Wajir","Mandera","Marsabit","Isiolo","Meru","Tharaka Nithi","Embu","Kitui","Machakos","Makueni","Nyandarua","Nyeri","Kirinyaga","Muranga","Kiambu","Turkana","West Pokot","Samburu","Trans Nzoia","Uasin Gishu","Elgeyo Marakwet","Nandi","Baringo","Laikipia","Nakuru","Narok","Kajiado","Kericho","Bomet","Kakamega","Vihiga","Bungoma","Busia","Siaya","Kisumu","Homa Bay","Migori","Kisii","Nyamira","Nairobi"];
+const estatesByCounty={
+"Nairobi":["Baba Dogo","Kasarani","Githurai 44","Githurai 45","Kahawa West","Kahawa Sukari","Roysambu","Zimmerman","Kibera","Kawangware","Kangemi","Dagoretti","Umoja","Kayole","Dandora","Buruburu","Eastleigh","South B","South C","Langata","Karen","Westlands","Parklands","Lavington","Kilimani","Syokimau","Kitengela","Athi River","Mlolongo","Embakasi","Pipeline","Fedha","Tassia","Imara Daima"],
+"Kiambu":["Kimbo","Ruiru","Juja","Thika","Kiambu Town","Githunguri","Limuru","Kikuyu","Banana","Kahawa Wendani","Witeithie","Mwiki","Kasarani Mwiki"],
+"Nakuru":["Nakuru Town","Naivasha","Njoro","Gilgil","Molo","Shabab","Kaptembwa","Lanets","Kiamunyi","Pipeline Nakuru","Section 58"],
+"Kisumu":["Kisumu Town","Manyatta","Nyalenda","Mamboleo","Kondele","Milimani Kisumu","Tom Mboya","Nyamasaria"],
+"Mombasa":["Mombasa Town","Nyali","Bamburi","Kisauni","Likoni","Mikindani","Changamwe","Tudor"],
+"Turkana":["Lodwar","Kakuma","Lokichar","Lokichogio","Lokori"],
+"Kwale":["Kwale Town","Diani","Ukunda","Msambweni","Kinango"],
+"Kilifi":["Kilifi Town","Malindi","Watamu","Mariakani","Mtwapa"],
+"Marsabit":["Marsabit Town","Moyale","Loiyangalani","Laisamis"],
+"Kajiado":["Kajiado Town","Kitengela","Ongata Rongai","Ngong","Kiserian"],
+"Machakos":["Machakos Town","Mlolongo","Syokimau","Athi River","Kangundo","Mwala"],
+"Kakamega":["Kakamega Town","Mumias","Lugari","Malava","Lurambi"],
+"Homa Bay":["Homa Bay Town","Ndhiwa","Mbita","Oyugis","Kendubay"],
+"Kisii":["Kisii Town","Suneka","Ogembo","Nyamache"],
+"Uasin Gishu":["Eldoret Town","Langas","Kapseret","Pioneer","Annex"],
+"Meru":["Meru Town","Maua","Nkubu","Timau"],
+"Garissa":["Garissa Town","Dadaab","Ijara"],
+"Default":["Town Centre","Market Area","Stage","Shaba","Majengo","Mtaa Mpya"]
+};
+const sampleKeja=[
+{title:"Single - Ksh 3,500/mo",estate:"Baba Dogo",county:"Nairobi",type:"Single",price:3500,img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500"},
+{title:"Bedsitter - Ksh 5,000/mo",estate:"Kibera",county:"Nairobi",type:"Bedsitter",price:5000,img:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500"},
+{title:"1 Bedroom - Ksh 8,500/mo",estate:"Kawangware",county:"Nairobi",type:"1 Bedroom",price:8500,img:"https://images.unsplash.com/photo-1493809842364-78817add58d1?w=500"},
+{title:"Single - Ksh 3,000/mo",estate:"Kimbo",county:"Kiambu",type:"Single",price:3000,img:"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500"},
+{title:"Bedsitter - Ksh 4,500/mo",estate:"Ruiru",county:"Kiambu",type:"Bedsitter",price:4500,img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500"},
+{title:"2 Bedroom - Ksh 12,000/mo",estate:"Nakuru Town",county:"Nakuru",type:"2 Bedroom",price:12000,img:"https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=500"},
+{title:"Single - Ksh 2,500/mo",estate:"Manyatta",county:"Kisumu",type:"Single",price:2500,img:"https://images.unsplash.com/photo-1493809842364-78817add58d1?w=500"},
+{title:"Bedsitter - Ksh 6,000/mo",estate:"Nyali",county:"Mombasa",type:"Bedsitter",price:6000,img:"https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=500"},
+{title:"Single - Ksh 2,000/mo",estate:"Lodwar",county:"Turkana",type:"Single",price:2000,img:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500"},
+{title:"1 Bedroom - Ksh 7,000/mo",estate:"Diani",county:"Kwale",type:"1 Bedroom",price:7000,img:"https://images.unsplash.com/photo-1493809842364-78817add58d1?w=500"},
+{title:"Bedsitter - Ksh 4,000/mo",estate:"Mlolongo",county:"Machakos",type:"Bedsitter",price:4000,img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500"},
+{title:"3 Bedroom - Ksh 18,000/mo",estate:"Eldoret Town",county:"Uasin Gishu",type:"3 Bedroom",price:18000,img:"https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=500"},
 ];
-let currentFilter='all';
-function load(){let saved=JSON.parse(localStorage.getItem('kejaList')||'[]');let all=[...saved,...kejas];if(currentFilter!=='all'){all=all.filter(k=>k.type===currentFilter)}let g=document.getElementById('kejaGrid');g.innerHTML='';all.forEach(k=>{g.innerHTML+=`<div class="card"><img src="${k.img}"><div class="info"><div style="font-size:12px;font-weight:700">${k.type} ${k.area}</div><div class="price">KSh ${k.price}</div><a href="https://wa.me/254794147629?text=Nimeona%20${k.type}%20${k.area}%20${k.price}" class="btn btn-wa">💬 0794147629</a><button onclick="shareOne('${k.type}','${k.area}','${k.price}')" class="btn btn-share">📤 Share</button></div></div>`});document.getElementById('countText').innerText=all.length+' vacant • 1st FREE Trial!';document.getElementById('liveKeja').innerText=all.length}
-function toggleMenu(){document.getElementById('sideMenu').classList.toggle('active')}
-function showModal(id){document.getElementById(id).classList.add('active')}
-function hideModal(id){document.getElementById(id).classList.remove('active')}
-function filterType(t){currentFilter=t;toggleMenu();load()}
-function doRegister(){
-let n=document.getElementById('rName').value,p=document.getElementById('rPhone').value;
-if(!n||!p){alert('Jaza jina na namba!');return}
-localStorage.setItem('user',JSON.stringify({name:n,phone:p}));
-hideModal('regModal');
-// Check FREE trial
-let freeUsed=localStorage.getItem('freeUsed');
-let saved=JSON.parse(localStorage.getItem('kejaList')||'[]');
-if(!freeUsed && saved.length===0){
- document.getElementById('freeOption').innerHTML='🎁 Uko na FREE TRIAL! Bonyeza hapa chini bila kulipa!';
- document.getElementById('payTitle').innerText='🎁 FREE TRIAL INAPATIKANA!';
- document.getElementById('trialMsg').innerHTML='<div style="background:#fbbf24;color:#000;padding:8px;border-radius:8px;font-weight:900">🎁 Hii ni FREE TRIAL yako ya 1st house!</div>';
- localStorage.setItem('isFreeTrial','yes');
-} else {
- document.getElementById('freeOption').innerHTML='⚠️ FREE Trial imetumika. Lipa 300 kwa Pochi 0794147629';
- document.getElementById('payTitle').innerText='💰 Lipa 300 - FREE imetumika';
- document.getElementById('trialMsg').innerHTML='<div style="background:#ef4444;color:#fff;padding:8px;border-radius:8px">Lipa 300 ndio uchapishe</div>';
- localStorage.setItem('isFreeTrial','no');
+let allKeja=[...sampleKeja];
+let currentFilter="";
+function init(){
+ const countySelect=document.getElementById("countySelect");
+ const pCounty=document.getElementById("pCounty");
+ const countyGrid=document.getElementById("countyGrid");
+ counties.forEach(c=>{
+   let o=document.createElement("option");o.value=c;o.textContent=c;countySelect.appendChild(o);
+   let o2=document.createElement("option");o2.value=c;o2.textContent=c;pCounty.appendChild(o2);
+   let tag=document.createElement("div");tag.className="countyTag";tag.textContent=c;tag.onclick=()=>{document.getElementById("countySelect").value=c;filterKeja();window.scrollTo(0,400)};countyGrid.appendChild(tag);
+ });
+ render(allKeja);
 }
-showModal('payModal');
+function render(list){
+ const grid=document.getElementById("keja");
+ grid.innerHTML="";
+ list.forEach(k=>{
+  grid.innerHTML+=`<div class="card"><img src="${k.img}"><div class="cardBody"><span class="badge">VACANT • ${k.county}</span><h3>${k.title}</h3><p>📍 ${k.estate}, ${k.county}</p><p class="price">Ksh ${k.price.toLocaleString()}/mo • ${k.type}</p><button class="btn btn-call" onclick="callLandlord()">📞 Piga Landlord</button><button class="btn btn-mpesa" onclick="alert('Lipa Pochi 0794147629 kupata namba ya landlord')">🔓 Lipa 300 Kupata Namba</button></div></div>`;
+ });
 }
-function doPay(){
-let isFree=localStorage.getItem('isFreeTrial');
-let code=document.getElementById('txnCode').value;
-if(isFree==='no' && code.length<4){alert('Weka M-Pesa Code ya 300! FREE imetumika.');return}
-if(isFree==='yes'){localStorage.setItem('paid','free');}else{localStorage.setItem('paid','yes');}
-hideModal('payModal');showModal('addModal');
-let u=JSON.parse(localStorage.getItem('user'));document.getElementById('kPhone').value=u.phone;
+function filterKeja(){
+ const search=document.getElementById("searchInput").value.toLowerCase();
+ const county=document.getElementById("countySelect").value;
+ const type=document.getElementById("typeSelect").value;
+ let filtered=allKeja.filter(k=>{
+  let matchSearch=!search || k.estate.toLowerCase().includes(search) || k.county.toLowerCase().includes(search) || k.title.toLowerCase().includes(search);
+  let matchCounty=!county || k.county===county;
+  let matchType=!type || k.type===type;
+  let matchChip=!currentFilter || k.type===currentFilter || k.estate===currentFilter || k.county===currentFilter || k.title.includes(currentFilter);
+  return matchSearch && matchCounty && matchType && matchChip;
+ });
+ render(filtered);
 }
-function publishKeja(){
-let t=document.getElementById('kType').value,a=document.getElementById('kArea').value,p=document.getElementById('kPrice').value,ph=document.getElementById('kPhone').value;
-if(!a||!p){alert('Jaza Eneo na Bei!');return}
-let newK={type:t,area:a,price:p,img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400',phone:ph};
-let saved=JSON.parse(localStorage.getItem('kejaList')||'[]');
-saved.unshift(newK);localStorage.setItem('kejaList',JSON.stringify(saved));
-let isFree=localStorage.getItem('isFreeTrial');
-if(isFree==='yes'){localStorage.setItem('freeUsed','yes');}
-document.getElementById('pubMsg').innerHTML=`<div style="background:#16a34a;padding:10px;border-radius:8px;text-align:center">✅ ${t} yako ${isFree==='yes'?'ya FREE TRIAL ':''}imechapishwa!<br><button onclick="shareOne('${t}','${a}','${p}')" style="background:#fff;color:#000;border:none;padding:8px 15px;border-radius:8px;font-weight:900;margin-top:8px">📤 Share Kenya Mzima</button></div>`;
-setTimeout(()=>{hideModal('addModal');load();},1800)
+function setChip(el,val){
+ document.querySelectorAll(".chip").forEach(c=>c.classList.remove("active"));
+ el.classList.add("active");currentFilter=val;filterKeja();
 }
-function shareApp(){let txt=`🏠 KEJA KENYA MZIMA - Pata Keja Bila Broker!\n🎁 1st HOUSE FREE TRIAL!\nSingle 3500 Baba Dogo, Kasarani 4000\nIngia: https://tdamtrix-ai.github.io/keja-kenya-mzima/\nPochi 0794147629`;window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`,'_blank')}
-function shareOne(type,area,price){let txt=`🏠 ${type} ${area} - KSh ${price} - BILA BROKER! 🎁 1 FREE Trial\nhttps://tdamtrix-ai.github.io/keja-kenya-mzima/`;window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`,'_blank')}
-let cnt=342;setInterval(()=>{cnt+=Math.floor(Math.random()*3);document.getElementById('liveCount').innerText=cnt},4000);
-load();
+function openPost(){document.getElementById("postModal").style.display="flex"}
+function closePost(){document.getElementById("postModal").style.display="none"}
+function submitKeja(){
+ const county=document.getElementById("pCounty").value;
+ const estate=document.getElementById("pEstate").value||"Mtaa Mpya";
+ const price=document.getElementById("pPrice").value||3500;
+ const type=document.getElementById("pType").value;
+ const title=`${type} - Ksh ${price}/mo`;
+ allKeja.unshift({title,estate,county,type,price:parseInt(price),img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500"});
+ render(allKeja);closePost();alert("Keja imewekwa! Lipa Pochi 0794147629 ndio ionekane na tenants 350+");
+}
+function callLandlord(){alert("Lipia 300 via Pochi 0794147629 ndio upate namba ya landlord direct!")}
+init();
 </script>
 </body>
 </html>
