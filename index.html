@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Nyumba Kenya Mzima - 47 Counties | Picha 6</title>
+<title>Nyumba Kenya Mzima - Delete Picha + Vuta</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif}
 body{background:#f5f5f5}
@@ -29,14 +29,16 @@ body{background:#f5f5f5}
 #postForm h3{text-align:center;color:#0a8a0a;margin-bottom:10px}
 #postForm input,#postForm select,#postForm textarea{width:100%;padding:12px;margin:7px 0;border:1px solid #ddd;border-radius:10px;font-size:14px}
 .upload-box{border:2px dashed #0a8a0a;padding:16px;border-radius:12px;text-align:center;background:#f9fff9;margin:10px 0}
-.preview-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}
-.preview-grid img{width:100%;height:85px;object-fit:cover;border-radius:10px;border:2px solid #0a8a0a}
+.preview-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-top:12px}
+.preview-item{position:relative}
+.preview-item img{width:100%;height:90px;object-fit:cover;border-radius:10px;border:2px solid #0a8a0a;display:block}
+.delete-pic-btn{position:absolute;top:-8px;right:-8px;background:red;color:#fff;border:none;width:28px;height:28px;border-radius:50%;font-weight:bold;cursor:pointer;font-size:16px;box-shadow:0 2px 6px rgba(0,0,0,.3)}
 .pay-btn{background:#0a8a0a;color:#fff;padding:15px;width:100%;border:none;border-radius:25px;font-weight:bold;font-size:16px;margin-top:10px}
 .mpesa-box{background:#FFF3CD;padding:14px;border-radius:12px;text-align:center;margin:10px 0;border:1px solid #FFC107;display:none}
 .modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.92);z-index:100;overflow:auto}
 .modal-content{background:#fff;margin:12px;border-radius:16px;overflow:hidden}
-.modal-main-img{width:100%;height:300px;object-fit:cover}
-.thumb-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:12px;background:#f2f2f2}
+.modal-main-img{width:100%;height:320px;object-fit:cover;display:block}
+.thumb-grid{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;padding:12px;background:#f2f2f2}
 .thumb-grid img{width:100%;height:75px;object-fit:cover;border-radius:10px;border:3px solid transparent;cursor:pointer}
 .thumb-grid img.active{border-color:#0a8a0a}
 </style>
@@ -50,7 +52,7 @@ body{background:#f5f5f5}
 
 <div class="hero">
 <h1>Kenya Mzima, <span>Nyumba Moja</span><br>Pata Bila Broker</h1>
-<p>Nairobi Mzima, Mombasa Mzima, Kisumu Mzima, Wajir, Turkana, Kwale... 47 Counties! - Picha 6, WhatsApp, Call, SMS</p>
+<p>Nairobi Mzima, Mombasa, Kisumu, Wajir, Turkana, Kwale... 47 Counties! - Vuta Picha 👉</p>
 </div>
 
 <div class="search-wrap">
@@ -86,6 +88,7 @@ body{background:#f5f5f5}
 <input type="file" id="houseImgs" accept="image/*" multiple onchange="previewImages(event)">
 <div id="previewGrid" class="preview-grid"></div>
 <small id="photoCountText" style="color:#0a8a0a;font-weight:bold;display:block;margin-top:8px"></small>
+<small style="color:#666;font-size:11px;display:block;margin-top:4px">💡 Ukiweka vibaya, bonyeza ❌ juu ya picha kufuta</small>
 </div>
 <div class="mpesa-box" id="mpesaBox"><b>⚠️ Simu hii imemaliza 3 FREE!</b><br>Till: 123456 - Lipa 300<br><input type="text" id="mpesaCode" placeholder="M-Pesa Code" style="margin-top:8px"></div>
 <button class="pay-btn" onclick="postNyumba()" id="postBtn">✅ WEKA NYUMBA PUBLIC BURE</button>
@@ -156,17 +159,36 @@ const sampleImages=[
 ];
 
 let uploadedImages=[];
-function previewImages(e){
-let files=e.target.files; uploadedImages=[]; document.getElementById('previewGrid').innerHTML='';
-if(files.length>6){alert('Maximum picha 6 tu!'); e.target.value=''; return;}
-Array.from(files).forEach(file=>{
-let r=new FileReader(); r.onload=function(ev){
-uploadedImages.push(ev.target.result);
-let img=document.createElement('img'); img.src=ev.target.result;
-document.getElementById('previewGrid').appendChild(img);
-document.getElementById('photoCountText').textContent='Umeweka picha '+uploadedImages.length+' / 6';
-}; r.readAsDataURL(file);
+function renderPreviews(){
+let grid=document.getElementById('previewGrid');
+grid.innerHTML='';
+uploadedImages.forEach((src,idx)=>{
+let div=document.createElement('div');
+div.className='preview-item';
+div.innerHTML='<img src="'+src+'"><button class="delete-pic-btn" onclick="deletePic('+idx+')">×</button>';
+grid.appendChild(div);
 });
+document.getElementById('photoCountText').textContent=uploadedImages.length>0?'Umeweka picha '+uploadedImages.length+' / 6 - Bonyeza ❌ kufuta':'';
+}
+function deletePic(idx){
+uploadedImages.splice(idx,1);
+renderPreviews();
+if(uploadedImages.length===0){ document.getElementById('houseImgs').value=''; }
+}
+function previewImages(e){
+let files=e.target.files;
+if(files.length>6){alert('Maximum picha 6 tu!'); e.target.value=''; return;}
+if(files.length+uploadedImages.length>6){alert('Umeshaweka '+uploadedImages.length+', unaweza ongeza '+(6-uploadedImages.length)+' tu!'); e.target.value=''; return;}
+Array.from(files).forEach(file=>{
+let r=new FileReader();
+r.onload=function(ev){
+uploadedImages.push(ev.target.result);
+if(uploadedImages.length>6){ uploadedImages=uploadedImages.slice(0,6); alert('Maximum 6 tu!'); }
+renderPreviews();
+};
+r.readAsDataURL(file);
+});
+e.target.value='';
 }
 function updateLocs(){
 let c=document.getElementById('filterCounty').value;
@@ -216,17 +238,23 @@ c.innerHTML='<div style="position:relative"><img src="'+firstImg+'" class="card-
 d.appendChild(c);
 });
 }
-let currentGalleryImgs=[]; let currentIdx=0;
+let currentGalleryImgs=[]; let currentIdx=0; let startX=0; let isDragging=false;
 function showDetail(k){
 currentGalleryImgs=k.imgs||[k.img]; currentIdx=0;
 let thumbs=currentGalleryImgs.map((im,i)=>'<img src="'+im+'" class="'+(i==0?'active':'')+'" onclick="changeMain('+i+')">').join('');
-document.getElementById('modalContent').innerHTML='<img src="'+currentGalleryImgs[0]+'" id="mainModalImg" class="modal-main-img"><div style="background:#000;color:#fff;padding:8px 12px;display:flex;justify-content:space-between;font-size:12px"><span id="photoIndicator">📸 Picha 1 / '+currentGalleryImgs.length+'</span><span>'+(k.court||k.loc)+'</span></div><div class="thumb-grid">'+thumbs+'</div><div style="padding:15px"><div style="display:flex;justify-content:space-between"><div><span class="badge badge-c">'+k.county+'</span><span class="badge badge-l" style="margin-left:4px">'+k.loc+'</span>'+(k.court?'<span class="court-badge">'+k.court+'</span>':'')+'</div><span class="price">Ksh '+k.rent+'</span></div><h3 style="margin:8px 0">'+(k.court?k.court+' - ':'')+k.type+' - '+k.loc+'</h3><div style="background:#FFF3CD;padding:10px;border-radius:10px;font-size:13px;line-height:1.6">🏢 <b>Court:</b> '+(k.court||'Hakuna')+'<br>🚪 <b>Details:</b> '+(k.room||'Hakuna')+'<br>📍 <b>Location:</b> '+k.loc+', '+k.county+'<br>📸 <b>Picha:</b> '+currentGalleryImgs.length+'<br>💬 <b>Maelezo:</b> '+(k.quote||'Hakuna')+'</div><p style="margin-top:8px">Mwenye Nyumba: <b>'+k.name+'</b> - '+k.phone+'</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><button onclick="prevPhoto()" style="padding:11px;border:1px solid #0a8a0a;border-radius:12px;background:#fff;font-weight:bold">⬅️ Iliyopita</button><button onclick="nextPhoto()" style="padding:11px;border:none;border-radius:12px;background:#0a8a0a;color:#fff;font-weight:bold">Ifuatayo ➡️</button></div><a href="tel:'+k.phone+'" style="background:#0a8a0a;color:#fff;padding:13px;display:block;text-align:center;border-radius:25px;text-decoration:none;margin-top:10px;font-weight:bold">📞 PIGA SIMU</a><a href="https://wa.me/'+k.phone+'" style="background:#25D366;color:#fff;padding:13px;display:block;text-align:center;border-radius:25px;text-decoration:none;margin-top:8px;font-weight:bold">💬 WHATSAPP CHAT</a><a href="sms:'+k.phone+'" style="background:#007bff;color:#fff;padding:13px;display:block;text-align:center;border-radius:25px;text-decoration:none;margin-top:8px;font-weight:bold">✉️ SMS CHAT</a><button onclick="document.getElementById(\'modal\').style.display=\'none\'" style="width:100%;padding:12px;border:none;background:#eee;border-radius:12px;margin-top:8px">Funga</button></div>';
+document.getElementById('modalContent').innerHTML='<div id="swipeArea" style="position:relative;overflow:hidden;background:#000"><img src="'+currentGalleryImgs[0]+'" id="mainModalImg" class="modal-main-img" style="transition:transform 0.25s ease"><div style="position:absolute;top:50%;width:100%;display:flex;justify-content:space-between;padding:0 10px;pointer-events:none;transform:translateY(-50%)"><span style="background:rgba(0,0,0,.6);color:#fff;padding:8px 12px;border-radius:50%">👈</span><span style="background:rgba(0,0,0,.6);color:#fff;padding:8px 12px;border-radius:50%">👉</span></div></div><div style="background:#000;color:#fff;padding:8px 12px;display:flex;justify-content:space-between;font-size:12px"><span id="photoIndicator">📸 Picha 1 / '+currentGalleryImgs.length+' - Vuta 👉</span><span>'+(k.court||k.loc)+'</span></div><div class="thumb-grid">'+thumbs+'</div><div style="padding:15px"><div style="display:flex;justify-content:space-between"><div><span class="badge badge-c">'+k.county+'</span><span class="badge badge-l" style="margin-left:4px">'+k.loc+'</span>'+(k.court?'<span class="court-badge">'+k.court+'</span>':'')+'</div><span class="price">Ksh '+k.rent+'</span></div><h3 style="margin:8px 0">'+(k.court?k.court+' - ':'')+k.type+' - '+k.loc+'</h3><div style="background:#FFF3CD;padding:10px;border-radius:10px;font-size:13px;line-height:1.6">🏢 <b>Court:</b> '+(k.court||'Hakuna')+'<br>🚪 <b>Details:</b> '+(k.room||'Hakuna')+'<br>📍 <b>Location:</b> '+k.loc+', '+k.county+'<br>📸 <b>Picha:</b> '+currentGalleryImgs.length+'<br>💬 <b>Maelezo:</b> '+(k.quote||'Hakuna')+'</div><p style="margin-top:8px">Mwenye Nyumba: <b>'+k.name+'</b> - '+k.phone+'</p><div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px"><button onclick="prevPhoto()" style="padding:11px;border:1px solid #0a8a0a;border-radius:12px;background:#fff;font-weight:bold">⬅️ Iliyopita</button><button onclick="nextPhoto()" style="padding:11px;border:none;border-radius:12px;background:#0a8a0a;color:#fff;font-weight:bold">Ifuatayo ➡️</button></div><a href="tel:'+k.phone+'" style="background:#0a8a0a;color:#fff;padding:13px;display:block;text-align:center;border-radius:25px;text-decoration:none;margin-top:10px;font-weight:bold">📞 PIGA SIMU</a><a href="https://wa.me/'+k.phone+'" style="background:#25D366;color:#fff;padding:13px;display:block;text-align:center;border-radius:25px;text-decoration:none;margin-top:8px;font-weight:bold">💬 WHATSAPP CHAT</a><a href="sms:'+k.phone+'" style="background:#007bff;color:#fff;padding:13px;display:block;text-align:center;border-radius:25px;text-decoration:none;margin-top:8px;font-weight:bold">✉️ SMS CHAT</a><button onclick="document.getElementById(\'modal\').style.display=\'none\'" style="width:100%;padding:12px;border:none;background:#eee;border-radius:12px;margin-top:8px">Funga</button></div>';
 document.getElementById('modal').style.display='block';
+setTimeout(()=>{
+let area=document.getElementById('swipeArea'); let img=document.getElementById('mainModalImg');
+if(!area||!img) return;
+area.addEventListener('touchstart', e=>{ startX=e.touches[0].clientX; isDragging=true; img.style.transition='none'; }, {passive:true});
+area.addEventListener('touchmove', e=>{ if(!isDragging) return; let diff=e.touches[0].clientX-startX; img.style.transform='translateX('+diff+'px)'; }, {passive:true});
+area.addEventListener('touchend', e=>{ isDragging=false; img.style.transition='transform 0.25s ease'; let diff=e.changedTouches[0].clientX-startX; if(diff<-50) nextPhoto(); else if(diff>50) prevPhoto(); else img.style.transform='translateX(0)'; });
+},100);
 }
-function changeMain(i){ currentIdx=i; document.getElementById('mainModalImg').src=currentGalleryImgs[i]; document.getElementById('photoIndicator').textContent='📸 Picha '+(i+1)+' / '+currentGalleryImgs.length; let thumbs=document.querySelectorAll('.thumb-grid img'); thumbs.forEach((t,idx)=>{ t.className=idx===i?'active':''; }); }
+function changeMain(i){ currentIdx=i; let imgEl=document.getElementById('mainModalImg'); if(imgEl){ imgEl.style.transform='translateX(0)'; imgEl.src=currentGalleryImgs[i]; } document.getElementById('photoIndicator').textContent='📸 Picha '+(i+1)+' / '+currentGalleryImgs.length+' - Vuta 👉'; document.querySelectorAll('.thumb-grid img').forEach((t,idx)=>{ t.className=idx===i?'active':''; }); }
 function nextPhoto(){ changeMain((currentIdx+1)%currentGalleryImgs.length); }
 function prevPhoto(){ changeMain((currentIdx-1+currentGalleryImgs.length)%currentGalleryImgs.length); }
-
 function postNyumba(){
 let n=document.getElementById('lname').value.trim();
 let p=document.getElementById('lphone').value.trim();
@@ -242,7 +270,7 @@ if(uploadedImages.length==0){ alert('Weka angalau picha 1! Maximum 6'); return;}
 freePosts=getFreePosts();
 if(freePosts>=3){ let code=document.getElementById('mpesaCode').value.trim(); if(!code){ alert('⚠️ Simu hii imemaliza 3 FREE! Hata ukibadilisha namba bado 3 tu. Weka M-Pesa Code'); return;} }
 let newNyumba={name:n,phone:p,county:c,loc:l,court:court,room:room,type:t,rent:r,quote:q,imgs:uploadedImages,img:uploadedImages[0],deviceId:getDeviceId()};
-nyumbas.unshift(newNyumba); freePosts++; setFreePosts(freePosts); localStorage.setItem('nyumbaListMzima',JSON.stringify(nyumbas)); updateFreeBanner(); render(nyumbas); document.getElementById('postForm').style.display='none'; uploadedImages=[]; document.getElementById('previewGrid').innerHTML=''; document.getElementById('photoCountText').textContent=''; alert('Hongera! '+(court||'Nyumba')+' ya '+l+' na picha '+newNyumba.imgs.length+' imewekwa PUBLIC!'); window.scrollTo(0,400);
+nyumbas.unshift(newNyumba); freePosts++; setFreePosts(freePosts); localStorage.setItem('nyumbaListMzima',JSON.stringify(nyumbas)); updateFreeBanner(); render(nyumbas); document.getElementById('postForm').style.display='none'; uploadedImages=[]; renderPreviews(); document.getElementById('previewGrid').innerHTML=''; document.getElementById('photoCountText').textContent=''; alert('Hongera! '+(court||'Nyumba')+' ya '+l+' na picha '+newNyumba.imgs.length+' imewekwa PUBLIC!'); window.scrollTo(0,400);
 }
 function filterNyumba(){
 let txt=document.getElementById('searchText').value.toLowerCase();
