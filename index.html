@@ -1,56 +1,61 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
+<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keja Kenya Mzima - 47 Counties</title>
+<title>Nyumba Kenya Mzima - 47 Counties | Pata Nyumba Bila Broker</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:Arial}
-body{background:#f5f5f5}
-.topbar{background:#0a8a0a;color:white;padding:10px 15px;display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:bold;font-size:18px}
+body{background:#f2f2f2}
+.topbar{background:#0a8a0a;color:white;padding:12px 15px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:20}
+.logo{font-weight:900;font-size:19px}
 .logo span{color:#FFC107}
-.post-btn-small{background:#FFC107;color:#000;padding:6px 12px;border-radius:15px;text-decoration:none;font-weight:bold;font-size:12px}
-.hero{background:#0a8a0a;color:white;padding:20px 15px 80px 15px;text-align:center}
-.hero h1{font-size:32px;line-height:1.2;font-weight:900}
+.post-btn-small{background:#FFC107;color:#000;padding:8px 15px;border-radius:20px;text-decoration:none;font-weight:bold;font-size:13px}
+.hero{background:linear-gradient(135deg,#0a8a0a 0%,#056305 100%);color:white;padding:22px 15px 85px 15px;text-align:center}
+.hero h1{font-size:29px;line-height:1.2;font-weight:900}
 .hero h1 span{color:#FFC107}
-.hero p{font-size:13px;margin:12px 0;opacity:0.9}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:20px 0}
-.stat-box{background:rgba(255,255,255,0.15);padding:15px;border-radius:12px}
-.stat-box h2{color:#FFC107;font-size:22px}
-.stat-box p{font-size:11px;letter-spacing:1px;margin-top:2px}
-.stat-box.center{grid-column:span 2;width:50%;margin:0 auto}
-.search-wrap{background:white;margin:-50px 15px 15px;padding:15px;border-radius:18px;box-shadow:0 5px 20px rgba(0,0,0,0.15)}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin:18px 0}
+.stat-box{background:rgba(255,255,255,0.15);padding:13px;border-radius:12px}
+.stat-box h2{color:#FFC107;font-size:21px}
+.stat-box p{font-size:10px}
+.stat-box.center{grid-column:span 2;width:48%;margin:0 auto}
+.search-wrap{background:white;margin:-55px 15px 15px;padding:14px;border-radius:18px;box-shadow:0 8px 25px rgba(0,0,0,0.15)}
 .search-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.search-grid input,.search-grid select{padding:12px;border-radius:10px;border:1px solid #ddd;background:#f9f9f9;width:100%;font-size:14px}
+.search-grid input,.search-grid select{padding:12px;border-radius:10px;border:1px solid #e0e0e0;background:#f9f9f9;width:100%}
 .full{grid-column:span 2}
-.btn-tafuta{background:#0a8a0a;color:white;padding:12px;border:none;border-radius:10px;font-weight:bold;width:100%}
-.card{background:white;margin:10px 15px;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,0.08)}
-.card-body{padding:12px}
-.badge{background:#e8f5e9;color:#0a8a0a;padding:4px 8px;border-radius:12px;font-size:11px;font-weight:bold}
-.price{color:#0a8a0a;font-weight:bold;font-size:18px;float:right}
-.wa-btn{background:#25D366;color:white;padding:10px;display:block;text-align:center;border-radius:20px;text-decoration:none;margin-top:8px;font-weight:bold;font-size:14px}
-#postForm{display:none;background:white;margin:15px;padding:15px;border-radius:15px;border:2px solid #0a8a0a}
-input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ddd;border-radius:10px}
-.pay-btn{background:#0a8a0a;color:white;padding:14px;width:100%;border:none;border-radius:25px;font-weight:bold}
-.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.7);z-index:99;padding:15px}
-.modal-content{background:white;padding:15px;border-radius:12px;margin-top:30px}
+.btn-tafuta{background:#0a8a0a;color:white;padding:13px;border:none;border-radius:10px;font-weight:bold;width:100%;font-size:16px}
+.free-banner{background:#e8f5e9;border:2px dashed #0a8a0a;margin:12px 15px;padding:12px;border-radius:12px;text-align:center}
+.card{background:white;margin:12px 15px;border-radius:14px;overflow:hidden;box-shadow:0 3px 12px rgba(0,0,0,0.08)}
+.card img{width:100%;height:185px;object-fit:cover}
+.badge{padding:4px 10px;border-radius:15px;font-size:11px;font-weight:bold}
+.badge-county{background:#e8f5e9;color:#0a8a0a}
+.badge-loc{background:#e3f2fd;color:#1565c0}
+.wa-btn{background:#25D366;color:white;padding:11px;display:block;text-align:center;border-radius:25px;text-decoration:none;margin-top:10px;font-weight:bold}
+#postForm{display:none;background:white;margin:15px;padding:16px;border-radius:16px;border:2px solid #0a8a0a}
+#postForm input,#postForm select{width:100%;padding:12px;margin:6px 0;border:1px solid #ddd;border-radius:10px}
+.upload-box{border:2px dashed #0a8a0a;padding:15px;border-radius:12px;text-align:center;background:#f9fff9;margin:8px 0}
+#previewImg{width:100%;height:160px;object-fit:cover;border-radius:10px;display:none;margin-top:8px}
+.pay-btn{background:#0a8a0a;color:white;padding:14px;width:100%;border:none;border-radius:25px;font-weight:bold;font-size:16px;margin-top:8px}
+.mpesa-box{background:#FFF3CD;padding:12px;border-radius:10px;text-align:center;margin:8px 0;border:1px solid #FFC107;display:none}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.75);z-index:99;padding:12px;overflow-y:auto}
+.modal-content{background:white;border-radius:14px;margin-top:20px;overflow:hidden}
+.modal-content img{width:100%;height:220px;object-fit:cover}
 </style>
 </head>
 <body>
 
 <div class="topbar">
-<div class="logo">Keja Kenya <span>Mzima</span></div>
-<a href="#" onclick="document.getElementById('postForm').style.display='block';window.scrollTo(0,0);return false;" class="post-btn-small">Post Keja</a>
+<div class="logo">Nyumba Kenya <span>Mzima</span></div>
+<a href="#" onclick="document.getElementById('postForm').style.display='block';window.scrollTo(0,0);return false;" class="post-btn-small">+ Weka Nyumba</a>
 </div>
 
 <div class="hero">
-<h1>Kenya Mzima, <span>Keja Moja</span><br>Pata Bila Broker</h1>
-<p>Landlord anaweka direct, tenant analipa 0 broker fee.<br>Kutoka Turkana hadi Kwale, Lodwar hadi Diani.</p>
-
+<h1>Kenya Mzima, <span>Nyumba Moja</span><br>Pata Bila Broker</h1>
+<p>Mwenye nyumba anaweka direct na picha, mpangaji analipa 0 broker fee.</p>
 <div class="stats">
 <div class="stat-box"><h2>47</h2><p>COUNTIES</p></div>
-<div class="stat-box"><h2>1,200+</h2><p>KEJA ZIKO</p></div>
-<div class="stat-box"><h2>4,500+</h2><p>TENANTS</p></div>
+<div class="stat-box"><h2>1,200+</h2><p>NYUMBA ZIKO</p></div>
+<div class="stat-box"><h2>4,500+</h2><p>WAPANGAJI</p></div>
 <div class="stat-box"><h2>98%</h2><p>HAPPY</p></div>
 <div class="stat-box center"><h2>24/7</h2><p>SUPPORT</p></div>
 </div>
@@ -58,49 +63,50 @@ input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ddd;border-r
 
 <div class="search-wrap">
 <div class="search-grid">
-<input type="text" id="searchText" placeholder="Tafuta: Kibera, Nakuru, Mwiki" onkeyup="filterKeja()" class="full">
-<select id="filterCounty" onchange="updateLocs();filterKeja()">
+<input type="text" id="searchText" placeholder="Tafuta: Kibera, Nakuru, Mwiki, Bamburi..." onkeyup="filterNyumba()" class="full">
+<select id="filterCounty" onchange="updateLocs();filterNyumba()">
 <option value="">County Zote 47</option>
-<option>Nairobi</option><option>Mombasa</option><option>Kisumu</option><option>Nakuru</option><option>Kiambu</option><option>Machakos</option><option>Kajiado</option><option>Uasin Gishu</option><option>Kilifi</option><option>Kwale</option><option>Garissa</option><option>Meru</option><option>Nyeri</option><option>Murang'a</option><option>Kitui</option><option>Embu</option><option>Kakamega</option><option>Bungoma</option><option>Busia</option><option>Siaya</option><option>Homa Bay</option><option>Migori</option><option>Kisii</option><option>Turkana</option><option>Mandera</option><option>Wajir</option><option>Marsabit</option><option>Isiolo</option><option>Nyandarua</option><option>Kirinyaga</option><option>Laikipia</option><option>Baringo</option><option>Narok</option><option>Kericho</option><option>Bomet</option><option>Vihiga</option><option>Taita Taveta</option><option>Tana River</option><option>Lamu</option><option>Tharaka Nithi</option><option>Makueni</option><option>Nyamira</option><option>Nandi</option><option>Elgeyo Marakwet</option><option>Samburu</option><option>West Pokot</option><option>Trans Nzoia</option>
+<option>Nairobi</option><option>Mombasa</option><option>Kisumu</option><option>Nakuru</option><option>Kiambu</option><option>Machakos</option><option>Kajiado</option><option>Uasin Gishu</option><option>Kilifi</option><option>Kwale</option><option>Garissa</option><option>Meru</option>
 </select>
-<select id="filterLoc" onchange="filterKeja()">
-<option value="">Location Zote</option>
-</select>
-<select id="filterType" onchange="filterKeja()">
-<option value="">Aina Zote</option>
-<option>Single</option><option>Bedsitter</option><option>1 Bedroom</option><option>2 Bedroom</option><option>3 Bedroom</option>
-</select>
-<button class="btn-tafuta" onclick="filterKeja()">TAFUTA</button>
+<select id="filterLoc" onchange="filterNyumba()"><option value="">Location Zote</option></select>
+<select id="filterType" onchange="filterNyumba()"><option value="">Aina Zote</option><option>Single</option><option>Bedsitter</option><option>1 Bedroom</option><option>2 Bedroom</option></select>
+<button class="btn-tafuta" onclick="filterNyumba()">TAFUTA NYUMBA</button>
 </div>
 </div>
 
+<div class="free-banner"><b>🎉 FREE TRIAL: Weka nyumba 5 BURE!</b><br><small id="freeCount">Umeweka 0 / 5 Bure</small></div>
+
 <div id="postForm">
-<h3 style="text-align:center;color:#0a8a0a">Post - Lipa 300 Kwanza</h3>
-<input type="text" id="lname" placeholder="Jina yako">
-<input type="text" id="lphone" placeholder="WhatsApp 07xx - Itaonekana Direct">
-<select id="lcounty" onchange="updatePostLocs()"><option value="">Chagua County (47)</option><option>Nairobi</option><option>Mombasa</option><option>Kisumu</option><option>Nakuru</option><option>Kiambu</option><option>Machakos</option><option>Kajiado</option><option>Uasin Gishu</option><option>Kilifi</option><option>Kwale</option><option>Garissa</option><option>Meru</option><option>Nyeri</option><option>Murang'a</option><option>Kitui</option><option>Embu</option><option>Kakamega</option><option>Bungoma</option><option>Busia</option><option>Siaya</option><option>Homa Bay</option><option>Migori</option><option>Kisii</option><option>Turkana</option><option>Mandera</option><option>Wajir</option><option>Marsabit</option><option>Isiolo</option><option>Nyandarua</option><option>Kirinyaga</option><option>Laikipia</option><option>Baringo</option><option>Narok</option><option>Kericho</option><option>Bomet</option><option>Vihiga</option><option>Taita Taveta</option><option>Tana River</option><option>Lamu</option><option>Tharaka Nithi</option><option>Makueni</option><option>Nyamira</option><option>Nandi</option><option>Elgeyo Marakwet</option><option>Samburu</option><option>West Pokot</option><option>Trans Nzoia</option></select>
+<h3 style="text-align:center;color:#0a8a0a">🏠 Weka Nyumba Yako - Jina + Namba Tu!</h3>
+<input type="text" id="lname" placeholder="Jina yako tu - e.g John">
+<input type="text" id="lphone" placeholder="Namba ya WhatsApp - 07xx">
+<select id="lcounty" onchange="updatePostLocs()"><option value="">Chagua County Yako</option><option>Nairobi</option><option>Mombasa</option><option>Kisumu</option><option>Nakuru</option><option>Kiambu</option><option>Machakos</option><option>Kajiado</option><option>Uasin Gishu</option><option>Kilifi</option><option>Kwale</option></select>
 <select id="lloc"><option value="">Chagua Location</option></select>
 <input type="text" id="llocOther" placeholder="Au andika Estate yako">
-<select id="ltype"><option>Single - 300/Year</option><option>Bedsitter - 600/Year</option><option>1 Bedroom - 900/Year</option><option>2 Bedroom - 1200/Year</option></select>
-<input type="text" id="lrent" placeholder="Rent e.g 3500">
-<div style="background:#FFF3CD;padding:10px;border-radius:10px;text-align:center"><b>M-Pesa Till 123456 - 300 BOB</b></div>
-<input type="text" id="mpesaCode" placeholder="Weka M-Pesa Code">
-<button class="pay-btn" onclick="postKeja()">NIMELIPA - POST SAI HII</button>
+<select id="ltype"><option>Single Room</option><option>Bedsitter</option><option>1 Bedroom</option><option>2 Bedroom</option><option>3 Bedroom</option></select>
+<input type="text" id="lrent" placeholder="Pesa ya nyumba - e.g 3500">
+<div class="upload-box"><b>📸 Weka Picha Ya Nyumba Yako</b><br><input type="file" id="houseImg" accept="image/*" onchange="previewImage(event)"><img id="previewImg"><br><small>Picha itavutia wapangaji!</small></div>
+<div class="mpesa-box" id="mpesaBox"><b>Umepitisha 5 FREE! Lipa 300 kuendelea</b><br>Till: <b>123456</b><br><input type="text" id="mpesaCode" placeholder="Weka M-Pesa Code" style="margin-top:8px"></div>
+<button class="pay-btn" onclick="postNyumba()" id="postBtn">✅ WEKA NYUMBA YANGU BURE</button>
+<small style="display:block;text-align:center;margin-top:8px;color:#666">Hakuna Email, Hakuna Sign In - Jina + Namba tu!</small>
 </div>
 
 <div id="listings"></div>
-<div id="modal" class="modal" onclick="this.style.display='none'"><div class="modal-content" id="modalContent"></div></div>
+<div id="modal" class="modal" onclick="if(event.target==this)this.style.display='none'"><div class="modal-content" id="modalContent"></div></div>
 
 <script>
-const countyLocs={"Nairobi":["Mwiki","Kasarani","Roysambu","Umoja","Kayole","Donholm","Pipeline","Ruai","Kahawa","Zimmerman","Githurai","Kariobangi","Komarock","Utawala","Kibera","Westlands","Eastleigh","Buruburu","Embakasi","South B","South C"],"Mombasa":["Bamburi","Nyali","Likoni","Kisauni","Mtwapa","Changamwe"],"Kiambu":["Ruiru","Thika","Juja","Kikuyu","Limuru"],"Nakuru":["Nakuru Town","Naivasha","Gilgil","Lanet"],"Kisumu":["Kondele","Mamboleo","Milimani","Nyalenda"],"Machakos":["Mlolongo","Athi River","Syokimau","Kitengela"],"Kajiado":["Kitengela","Rongai","Ngong"],"Uasin Gishu":["Eldoret","Langas","Kapsoya"],"Kakamega":["Kakamega Town","Mumias"],"Kilifi":["Kilifi Town","Malindi","Mtwapa"],"Kwale":["Ukunda","Diani"],"Garissa":["Garissa Town"],"Meru":["Meru Town","Maua"],"Nyeri":["Nyeri Town","Karatina"],"Murang'a":["Murang'a Town","Kenol"],"Kitui":["Kitui Town","Mwingi"],"Embu":["Embu Town"],"Bungoma":["Bungoma Town","Webuye"],"Busia":["Busia Town","Malaba"],"Siaya":["Siaya Town","Bondo"],"Homa Bay":["Homa Bay Town","Oyugis"],"Migori":["Migori Town","Rongo"],"Kisii":["Kisii Town"]};
+const countyLocs={"Nairobi":["Mwiki","Kasarani","Roysambu","Umoja","Kayole","Donholm","Pipeline","Ruai","Kahawa","Zimmerman","Githurai","Kariobangi","Komarock","Utawala","Kibera"],"Mombasa":["Bamburi","Nyali","Likoni","Kisauni","Mtwapa"],"Kiambu":["Ruiru","Thika","Juja","Kikuyu"],"Nakuru":["Nakuru Town","Naivasha","Gilgil","Lanet"],"Kisumu":["Kondele","Mamboleo","Milimani"]};
+const sampleImages=["https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600&h=400&fit=crop","https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=600&h=400&fit=crop","https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600&h=400&fit=crop","https://images.unsplash.com/photo-1493809842364-78817add58d?w=600&h=400&fit=crop"];
+let uploadedImageData="";function previewImage(e){let file=e.target.files[0];if(!file)return;let reader=new FileReader();reader.onload=function(ev){uploadedImageData=ev.target.result;let img=document.getElementById('previewImg');img.src=uploadedImageData;img.style.display='block';};reader.readAsDataURL(file);}
 function updateLocs(){let c=document.getElementById('filterCounty').value;let s=document.getElementById('filterLoc');s.innerHTML='<option value="">Location Zote</option>';if(countyLocs[c]){countyLocs[c].forEach(l=>{let o=document.createElement('option');o.value=l;o.textContent=l;s.appendChild(o);});}}
 function updatePostLocs(){let c=document.getElementById('lcounty').value;let s=document.getElementById('lloc');s.innerHTML='<option value="">Chagua Location</option>';if(countyLocs[c]){countyLocs[c].forEach(l=>{let o=document.createElement('option');o.value=l;o.textContent=l;s.appendChild(o);});}}
-let kejas=[{name:"John",phone:"254700000000",county:"Nairobi",loc:"Mwiki",type:"Single",rent:"3500"},{name:"Mama Njeri",phone:"254711111111",county:"Kiambu",loc:"Ruiru",type:"Bedsitter",rent:"6500"},{name:"Ali",phone:"254722222222",county:"Mombasa",loc:"Bamburi",type:"1 Bedroom",rent:"12000"},{name:"Otieno",phone:"254733333333",county:"Kisumu",loc:"Kondele",type:"Single",rent:"3000"}];
-function render(list){let d=document.getElementById('listings');d.innerHTML='';list.forEach(k=>{let c=document.createElement('div');c.className='card';c.onclick=()=>showMap(k);c.innerHTML=`<div class="card-body"><span class="badge">${k.county}</span> <span class="badge" style="background:#e3f2fd;color:#1565c0">${k.loc}</span><span class="price">Ksh ${k.rent}</span><div style="clear:both"></div><b style="display:block;margin:6px 0">${k.type} - ${k.loc}</b><small style="color:#666">📍 ${k.loc}, ${k.county} • ${k.name}</small><a href="https://wa.me/${k.phone}" class="wa-btn" onclick="event.stopPropagation()">💬 Chat ${k.name} Direct</a></div>`;d.appendChild(c);});}
-function showMap(k){document.getElementById('modalContent').innerHTML=`<h3>📍 ${k.loc}, ${k.county}</h3><p>${k.type} - Ksh ${k.rent}</p><p>Landlord: ${k.name}</p><a href="https://www.google.com/maps/search/?api=1&query=${k.loc}+${k.county}+Kenya" target="_blank" class="wa-btn" style="background:#0a8a0a">🗺️ ONA ${k.loc} KWA MAP</a><br><a href="https://wa.me/${k.phone}" class="wa-btn">Chat WhatsApp Direct</a><br><button onclick="document.getElementById('modal').style.display='none'" style="width:100%;padding:10px;border:none;background:#eee;border-radius:10px;margin-top:8px">Funga</button>`;document.getElementById('modal').style.display='block';}
-function postKeja(){let n=document.getElementById('lname').value;let p=document.getElementById('lphone').value;let c=document.getElementById('lcounty').value;let l=document.getElementById('lloc').value||document.getElementById('llocOther').value;let t=document.getElementById('ltype').value;let r=document.getElementById('lrent').value;let m=document.getElementById('mpesaCode').value;if(!n||!p||!c||!l||!m){alert('Jaza zote!');return;}kejas.unshift({name:n,phone:p,county:c,loc:l,type:t,rent:r});render(kejas);document.getElementById('postForm').style.display='none';alert('Ime-post!');}
-function filterKeja(){let txt=document.getElementById('searchText').value.toLowerCase();let c=document.getElementById('filterCounty').value.toLowerCase();let l=document.getElementById('filterLoc').value.toLowerCase();let t=document.getElementById('filterType').value.toLowerCase();let f=kejas.filter(k=>(txt==''||k.loc.toLowerCase().includes(txt)||k.county.toLowerCase().includes(txt))&&(c==''||c.includes('county')||k.county.toLowerCase()==c)&&(l==''||l.includes('location')||k.loc.toLowerCase().includes(l))&&(t==''||t.includes('aina')||k.type.toLowerCase().includes(t)));render(f);}
-render(kejas);
+let nyumbas=[{name:"John",phone:"254700000000",county:"Nairobi",loc:"Mwiki",type:"Single",rent:"3500",img:sampleImages[0]},{name:"Mama Njeri",phone:"254711111111",county:"Kiambu",loc:"Ruiru",type:"Bedsitter",rent:"6500",img:sampleImages[1]},{name:"Ali",phone:"254722222222",county:"Mombasa",loc:"Bamburi",type:"1 Bedroom",rent:"12000",img:sampleImages[2]},{name:"Otieno",phone:"254733333333",county:"Kisumu",loc:"Kondele",type:"Single",rent:"3000",img:sampleImages[3]}];
+let freePosts=parseInt(localStorage.getItem('nyumbaFreePosts')||'0');function updateFreeBanner(){let left=5-freePosts;let b=document.getElementById('freeCount');let btn=document.getElementById('postBtn');let m=document.getElementById('mpesaBox');if(freePosts<5){b.textContent=`Umeweka ${freePosts} / 5 Bure - Bado ${left} free`;btn.textContent=`✅ WEKA NYUMBA BURE (${left} zimebaki)`;m.style.display='none';}else{b.innerHTML=`<span style="color:red">Umepitisha 5 FREE! Lipa 300</span>`;btn.textContent=`💰 NIMELIPA - WEKA NYUMBA (300)`;m.style.display='block';}}
+function render(list){let d=document.getElementById('listings');d.innerHTML='';list.forEach((k,i)=>{let c=document.createElement('div');c.className='card';c.onclick=()=>showDetail(k);c.innerHTML=`<img src="${k.img||sampleImages[i%4]}"><div style="padding:12px"><div style="display:flex;justify-content:space-between"><div><span class="badge badge-county">${k.county}</span><span class="badge badge-loc" style="margin-left:4px">${k.loc}</span></div><span style="color:#0a8a0a;font-weight:900;font-size:19px">Ksh ${k.rent}</span></div><h3 style="margin:6px 0">${k.type} - ${k.loc}</h3><div style="color:#666;font-size:12px">📍 ${k.loc}, ${k.county} • Mwenye Nyumba: ${k.name}</div><a href="https://wa.me/${k.phone}" class="wa-btn" onclick="event.stopPropagation()">💬 Chat ${k.name} Direct</a></div>`;d.appendChild(c);});}
+function showDetail(k){document.getElementById('modalContent').innerHTML=`<img src="${k.img}"><div style="padding:15px"><span class="badge badge-county">${k.county}</span><span class="badge badge-loc" style="margin-left:4px">${k.loc}</span><span style="float:right;color:#0a8a0a;font-weight:900">Ksh ${k.rent}</span><h3 style="margin:8px 0">${k.type} - ${k.loc}</h3><p>📍 ${k.loc}, ${k.county} County</p><p>Mwenye Nyumba: ${k.name}</p><a href="https://www.google.com/maps/search/?api=1&query=${k.loc}+${k.county}+Kenya" target="_blank" class="wa-btn" style="background:#0a8a0a">🗺️ ONA RAMANI</a><a href="https://wa.me/${k.phone}" class="wa-btn">💬 CHAT WHATSAPP</a><button onclick="document.getElementById('modal').style.display='none'" style="width:100%;padding:11px;border:none;background:#eee;border-radius:10px;margin-top:10px">Funga</button></div>`;document.getElementById('modal').style.display='block';}
+function postNyumba(){let n=document.getElementById('lname').value.trim();let p=document.getElementById('lphone').value.trim();let c=document.getElementById('lcounty').value;let l=document.getElementById('lloc').value||document.getElementById('llocOther').value.trim();let t=document.getElementById('ltype').value;let r=document.getElementById('lrent').value.trim();if(!n||!p||!c||!l||!r){alert('Jaza Jina, Namba, County, Location, Rent!');return;}if(freePosts>=5){let code=document.getElementById('mpesaCode').value.trim();if(!code){alert('Weka M-Pesa Code - umepitisha 5 free!');return;}}let imgToUse=uploadedImageData||sampleImages[Math.floor(Math.random()*sampleImages.length)];nyumbas.unshift({name:n,phone:p,county:c,loc:l,type:t,rent:r,img:imgToUse});freePosts++;localStorage.setItem('nyumbaFreePosts',freePosts);updateFreeBanner();render(nyumbas);document.getElementById('postForm').style.display='none';alert('Hongera '+n+'! Nyumba yako ya '+l+' imewekwa na picha!');window.scrollTo(0,400);}
+function filterNyumba(){let txt=document.getElementById('searchText').value.toLowerCase();let c=document.getElementById('filterCounty').value.toLowerCase();let l=document.getElementById('filterLoc').value.toLowerCase();let t=document.getElementById('filterType').value.toLowerCase();let f=nyumbas.filter(k=>(txt==''||k.loc.toLowerCase().includes(txt)||k.county.toLowerCase().includes(txt))&&(c==''||c.includes('county')||k.county.toLowerCase()==c)&&(l==''||l.includes('location')||k.loc.toLowerCase().includes(l))&&(t==''||t.includes('aina')||k.type.toLowerCase().includes(t)));render(f);}
+updateFreeBanner();render(nyumbas);
 </script>
 </body>
 </html>
