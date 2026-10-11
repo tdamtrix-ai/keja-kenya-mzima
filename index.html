@@ -1,129 +1,133 @@
 <!DOCTYPE html>
-<html lang="sw">
+<html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keja Kenya Mzima - Pata Keja Bila Broker | 47 Counties</title>
-<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+<title>KEJA 47 COUNTIES - ALL LOCATIONS</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Outfit',sans-serif}
-body{background:#f6faf6;color:#111}
-header{background:#0a7a2d;color:#fff;padding:14px 5%;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:99}
-.hero{background:linear-gradient(135deg,#0a7a2d,#0f9e3c);color:#fff;padding:50px 5% 70px;text-align:center}
-.hero h2{font-size:40px;font-weight:800;line-height:1.1}.hero h2 span{color:#ffb800}
-.hero p{margin:15px auto;max-width:650px;font-size:15px;opacity:.95}
-.stats{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin-top:28px}
-.stat{background:rgba(255,255,255,.18);padding:12px 18px;border-radius:12px;min-width:125px}
-.stat b{font-size:22px;color:#ffb800;display:block}.stat small{font-size:10px;letter-spacing:1px}
-.searchBox{background:#fff;max-width:920px;margin:-35px auto 18px;padding:16px;border-radius:18px;box-shadow:0 15px 40px rgba(0,0,0,.14);display:flex;gap:10px;flex-wrap:wrap}
-.searchBox input,.searchBox select{flex:1;min-width:140px;padding:13px;border:2px solid #e5e5e5;border-radius:10px;font-size:14px}
-.searchBox button{background:#0a7a2d;color:#fff;border:0;padding:13px 24px;border-radius:10px;font-weight:800;cursor:pointer}
-.filters{padding:0 5%;display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px;overflow-x:auto}
-.chip{padding:8px 14px;border-radius:20px;border:1.5px solid #0a7a2d;background:#fff;cursor:pointer;font-weight:700;font-size:12px;white-space:nowrap}
-.chip.active{background:#0a7a2d;color:#fff}
-.grid{padding:0 5% 30px;display:grid;grid-template-columns:repeat(auto-fill,minmax(285px,1fr));gap:16px}
-.card{background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 4px 18px rgba(0,0,0,.06);border:1px solid #eee}
-.card img{width:100%;height:155px;object-fit:cover}
-.cardBody{padding:12px}.badge{background:#ffb800;color:#111;padding:3px 8px;border-radius:6px;font-size:10px;font-weight:800}
-.price{color:#0a7a2d;font-weight:800;margin-top:6px}
-.btn{width:100%;margin-top:8px;padding:11px;border:0;border-radius:10px;font-weight:700;cursor:pointer}
-.btn-call{background:#0a7a2d;color:#fff}.btn-mpesa{background:#111;color:#fff}
-.countySec{background:#fff;margin:0 5% 20px;padding:18px;border-radius:16px}
-.countyTag{background:#eef6ee;color:#0a7a2d;padding:7px 12px;border-radius:20px;font-size:12px;font-weight:700;display:inline-block;margin:4px;cursor:pointer;border:1px solid #cfe9cf}
-footer{background:#0e0e0e;color:#fff;padding:30px 5%;text-align:center}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.65);display:none;align-items:center;justify-content:center;z-index:999;padding:15px}
-.modalBox{background:#fff;border-radius:16px;max-width:400px;width:100%;padding:20px}
-.modalBox input,.modalBox select,.modalBox textarea{width:100%;padding:11px;margin:6px 0;border:1.5px solid #ddd;border-radius:9px}
+body{font-family:Arial;margin:0;background:#f5f5f5}
+.header{background:#0a8a0a;color:white;padding:15px;text-align:center;position:sticky;top:0;z-index:10}
+.btn-post{background:#25D366;color:white;padding:15px;margin:10px;border-radius:12px;display:block;text-align:center;text-decoration:none;font-weight:bold}
+.filter-box{background:white;padding:10px;margin:10px;border-radius:10px}
+.filter-box select,.filter-box input{width:100%;padding:10px;margin:5px 0;border-radius:8px;border:1px solid #ccc;box-sizing:border-box}
+.card{background:white;margin:10px;border-radius:10px;box-shadow:0 2px 5px #ccc;cursor:pointer}
+.card-body{padding:12px}
+.badge{background:#0a8a0a;color:white;padding:3px 8px;border-radius:10px;font-size:12px}
+.wa-btn{background:#25D366;color:white;padding:12px;display:block;text-align:center;border-radius:8px;text-decoration:none;margin-top:8px;font-weight:bold}
+#postForm{display:none;background:white;margin:10px;padding:15px;border-radius:10px;border:2px solid #0a8a0a}
+input,select{width:100%;padding:12px;margin:6px 0;border:1px solid #ccc;border-radius:8px;box-sizing:border-box}
+.pay-btn{background:#0a8a0a;color:white;padding:16px;width:100%;border:none;border-radius:10px;font-weight:bold;font-size:18px}
+.mpesa-box{background:#FFF3CD;padding:12px;border-radius:8px;border:1px solid #FFC107;margin:10px 0;text-align:center}
+.modal{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.8);z-index:20;padding:20px;box-sizing:border-box}
+.modal-content{background:white;padding:15px;border-radius:10px;margin-top:20px;max-height:80vh;overflow:auto}
 </style>
 </head>
 <body>
-<header><h1 style="font-weight:800">Keja<span style="color:#ffb800"> Kenya Mzima</span></h1><div><a href="#" onclick="openPost()" style="color:#fff;text-decoration:none;font-weight:700;background:#ffb800;color:#111;padding:8px 14px;border-radius:8px">+ Weka Keja</a></div></header>
 
-<div class="hero">
-<h2>Kenya Mzima, <span>Keja Moja</span><br>Pata Bila Broker</h2>
-<p>Landlord anaweka direct, tenant analipa 0 broker fee. Kutoka Turkana hadi Kwale, Lodwar hadi Diani.</p>
-<div class="stats">
-<div class="stat"><b>47</b><small>COUNTIES</small></div>
-<div class="stat"><b>1,200+</b><small>KEJA ZIKO</small></div>
-<div class="stat"><b>4,500+</b><small>TENANTS</small></div>
-<div class="stat"><b>98%</b><small>HAPPY</small></div>
-<div class="stat"><b>24/7</b><small>SUPPORT</small></div>
-</div>
+<div class="header">
+<h2 style="margin:0">KEJA KENYA MZIMA</h2>
+<small>47 COUNTIES + ALL LOCATIONS - 100% KENYA</small>
 </div>
 
-<div class="searchBox">
-<input id="searchInput" placeholder="Tafuta: Kibera, Nakuru, Kisumu..." oninput="filterKeja()">
-<select id="countySelect" onchange="filterKeja()"><option value="">County Zote 47</option></select>
-<select id="typeSelect" onchange="filterKeja()"><option value="">Aina Zote</option><option>Single</option><option>Bedsitter</option><option>1 Bedroom</option><option>2 Bedroom</option><option>3 Bedroom</option></select>
-<button onclick="filterKeja()">TAFUTA</button>
+<div class="filter-box">
+<select id="filterCounty" onchange="updateFilterLocations();filterKeja()">
+<option value="">Chagua County - 47 Zote</option>
+<option>Mombasa</option><option>Kwale</option><option>Kilifi</option><option>Tana River</option><option>Lamu</option><option>Taita Taveta</option><option>Garissa</option><option>Wajir</option><option>Mandera</option><option>Marsabit</option><option>Isiolo</option><option>Meru</option><option>Tharaka Nithi</option><option>Embu</option><option>Kitui</option><option>Machakos</option><option>Makueni</option><option>Nyandarua</option><option>Nyeri</option><option>Kirinyaga</option><option>Murang'a</option><option>Kiambu</option><option>Turkana</option><option>West Pokot</option><option>Samburu</option><option>Trans Nzoia</option><option>Uasin Gishu</option><option>Elgeyo Marakwet</option><option>Nandi</option><option>Baringo</option><option>Laikipia</option><option>Nakuru</option><option>Narok</option><option>Kajiado</option><option>Kericho</option><option>Bomet</option><option>Kakamega</option><option>Vihiga</option><option>Bungoma</option><option>Busia</option><option>Siaya</option><option>Kisumu</option><option>Homa Bay</option><option>Migori</option><option>Kisii</option><option>Nyamira</option><option>Nairobi</option>
+</select>
+<select id="filterLocation" onchange="filterKeja()">
+<option value="">Chagua Location / Estate</option>
+</select>
 </div>
 
-<div class="filters">
-<button class="chip active" onclick="setChip(this,'')">ZOTE</button>
-<button class="chip" onclick="setChip(this,'Single')">Single</button>
-<button class="chip" onclick="setChip(this,'Bedsitter')">Bedsitter</button>
-<button class="chip" onclick="setChip(this,'1 Bedroom')">1BR</button>
-<button class="chip" onclick="setChip(this,'2 Bedroom')">2BR</button>
-<button class="chip" onclick="setChip(this,'Kibera')">Kibera</button>
-<button class="chip" onclick="setChip(this,'Nakuru')">Nakuru</button>
-<button class="chip" onclick="setChip(this,'Kisumu')">Kisumu</button>
-<button class="chip" onclick="setChip(this,'Mombasa')">Mombasa</button>
-<button class="chip" onclick="setChip(this,'Turkana')">Turkana</button>
+<a href="#" onclick="document.getElementById('postForm').style.display='block';return false;" class="btn-post">📢 POST NYUMBA - LIPA 300 KWANZA</a>
+
+<div id="postForm">
+<h3 style="text-align:center;color:#0a8a0a">47 COUNTIES + LOCATIONS ZOTE</h3>
+<input type="text" id="lname" placeholder="Jina yako">
+<input type="text" id="lphone" placeholder="WhatsApp 07xx - Itaonekana Direct!">
+<select id="lcounty" onchange="updateLocations()">
+<option value="">Chagua County Yako</option>
+<option>Mombasa</option><option>Kwale</option><option>Kilifi</option><option>Tana River</option><option>Lamu</option><option>Taita Taveta</option><option>Garissa</option><option>Wajir</option><option>Mandera</option><option>Marsabit</option><option>Isiolo</option><option>Meru</option><option>Tharaka Nithi</option><option>Embu</option><option>Kitui</option><option>Machakos</option><option>Makueni</option><option>Nyandarua</option><option>Nyeri</option><option>Kirinyaga</option><option>Murang'a</option><option>Kiambu</option><option>Turkana</option><option>West Pokot</option><option>Samburu</option><option>Trans Nzoia</option><option>Uasin Gishu</option><option>Elgeyo Marakwet</option><option>Nandi</option><option>Baringo</option><option>Laikipia</option><option>Nakuru</option><option>Narok</option><option>Kajiado</option><option>Kericho</option><option>Bomet</option><option>Kakamega</option><option>Vihiga</option><option>Bungoma</option><option>Busia</option><option>Siaya</option><option>Kisumu</option><option>Homa Bay</option><option>Migori</option><option>Kisii</option><option>Nyamira</option><option>Nairobi</option>
+</select>
+<select id="lloc">
+<option value="">Chagua Estate / Location Kwanza Chagua County</option>
+</select>
+<input type="text" id="llocOther" placeholder="Au andika Estate yako kama haipo kwa list">
+<select id="ltype"><option>Single - 300/Year</option><option>Bedsitter - 600/Year</option><option>1 Bedroom - 900/Year</option><option>2 Bedroom - 1200/Year</option><option>3 Bedroom - 1500/Year</option></select>
+<input type="text" id="lrent" placeholder="Rent e.g 3500">
+<div class="mpesa-box"><b>💰 LIPA M-PESA TILL 123456 - 300 BOB</b><br><small>Keja Kenya Mzima - Lipa ndio number yako ionekane!</small></div>
+<input type="text" id="mpesaCode" placeholder="Weka M-Pesa Code baada ya kulipa">
+<button class="pay-btn" onclick="checkPayment()">✅ NIMELIPA - POST SAI HII</button>
 </div>
 
-<div id="kejaGrid" class="grid"></div>
-
-<div class="countySec">
-<h3 style="margin-bottom:8px">📍 Counties 47 - Bonyeza Uone Keja</h3>
-<div id="countyGrid"></div>
-</div>
-
-<footer>
-<h3>Keja Kenya Mzima 🇰🇪</h3>
-<p style="margin-top:8px">Pochi la Biashara: <b style="color:#ffb800">0794147629</b> | Bila Broker, Bila Commission</p>
-<p style="margin-top:8px;font-size:11px;opacity:.6">© 2026 Keja Kenya Mzima - Kutoka Baba Dogo hadi Lodwar, Kibera hadi Diani - Kenya Mzima</p>
-<p style="margin-top:10px;font-size:11px">Single 300/- | Bedsitter 400/- | 1BR 600/- | 2BR 800/- | 3BR 1000/-</p>
-</footer>
-
-<div class="modal" id="postModal"><div class="modalBox">
-<h3>Weka Keja Yako</h3>
-<select id="pCounty"></select>
-<input id="pEstate" placeholder="Mtaa: Kibera, Kimbo, Lodwar...">
-<input id="pPrice" placeholder="Bei: 3500">
-<select id="pType"><option>Single</option><option>Bedsitter</option><option>1 Bedroom</option><option>2 Bedroom</option><option>3 Bedroom</option></select>
-<input id="pPhone" placeholder="Namba yako">
-<button class="btn btn-call" onclick="submitKeja()">WEKA - Lipa 0794147629</button>
-<button class="btn" style="background:#eee;color:#111" onclick="closePost()">Funga</button>
-</div></div>
+<div id="listings"></div>
+<div id="locModal" class="modal" onclick="this.style.display='none'"><div class="modal-content" id="modalContent"></div></div>
 
 <script>
-const counties=["Mombasa","Kwale","Kilifi","Tana River","Lamu","Taita Taveta","Garissa","Wajir","Mandera","Marsabit","Isiolo","Meru","Tharaka Nithi","Embu","Kitui","Machakos","Makueni","Nyandarua","Nyeri","Kirinyaga","Muranga","Kiambu","Turkana","West Pokot","Samburu","Trans Nzoia","Uasin Gishu","Elgeyo Marakwet","Nandi","Baringo","Laikipia","Nakuru","Narok","Kajiado","Kericho","Bomet","Kakamega","Vihiga","Bungoma","Busia","Siaya","Kisumu","Homa Bay","Migori","Kisii","Nyamira","Nairobi"];
-const keja=[
-{title:"Single Ksh 3,500",estate:"Baba Dogo",county:"Nairobi",type:"Single",price:3500,img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500"},
-{title:"Bedsitter Ksh 5,000",estate:"Kibera",county:"Nairobi",type:"Bedsitter",price:5000,img:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500"},
-{title:"1BR Ksh 8,500",estate:"Kawangware",county:"Nairobi",type:"1 Bedroom",price:8500,img:"https://images.unsplash.com/photo-1493809842364-78817add58d1?w=500"},
-{title:"Single Ksh 3,000",estate:"Kimbo",county:"Kiambu",type:"Single",price:3000,img:"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=500"},
-{title:"2BR Ksh 12,000",estate:"Nakuru Town",county:"Nakuru",type:"2 Bedroom",price:12000,img:"https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=500"},
-{title:"Single Ksh 2,500",estate:"Manyatta",county:"Kisumu",type:"Single",price:2500,img:"https://images.unsplash.com/photo-1493809842364-78817add58d1?w=500"},
-{title:"Bedsitter Ksh 6,000",estate:"Nyali",county:"Mombasa",type:"Bedsitter",price:6000,img:"https://images.unsplash.com/photo-1560448204-603b3fc33ddc?w=500"},
-{title:"Single Ksh 2,000",estate:"Lodwar",county:"Turkana",type:"Single",price:2000,img:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500"},
-{title:"1BR Ksh 7,000",estate:"Diani",county:"Kwale",type:"1 Bedroom",price:7000,img:"https://images.unsplash.com/photo-1493809842364-78817add58d1?w=500"},
-{title:"Bedsitter Ksh 4,000",estate:"Mlolongo",county:"Machakos",type:"Bedsitter",price:4000,img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500"},
-{title:"3BR Ksh 18,000",estate:"Eldoret",county:"Uasin Gishu",type:"3 Bedroom",price:18000,img:"https://images.unsplash.com/photo-1560185007-cde436f6a4d0?w=500"},
-{title:"Single Ksh 2,800",estate:"Kakamega Town",county:"Kakamega",type:"Single",price:2800,img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500"},
+const countyLocations={
+"Nairobi":["Mwiki","Kasarani","Roysambu","Umoja","Kayole","Donholm","Buruburu","Embakasi","Pipeline","Fedha","Ruai","Kahawa West","Kahawa Sukari","Zimmerman","Githurai 44","Githurai 45","Kariobangi","Dandora","Komarock","Utawala","Syokimau","South B","South C","Langata","Kibera","Kawangware","Kangemi","Westlands","Parklands","Eastleigh","Pangani","Ngara","Kilimani","Kileleshwa","Lavington","Runda","Karen"],
+"Mombasa":["Bamburi","Nyali","Likoni","Kisauni","Tudor","Mtwapa","Shanzu","Bombolulu","Mikindani","Changamwe","Jomvu","Magongo"],
+"Kiambu":["Ruiru","Thika","Juja","Kikuyu","Limuru","Githurai","Kiambu Town","Karuri","Banana","Gachie","Kahawa Wendani","Membley","Witeithie","Kiganjo"],
+"Nakuru":["Nakuru Town","Naivasha","Gilgil","Njoro","Molo","Bahati","Lanet","Section 58","Milimani","Kiamunyi","Kabarak"],
+"Kisumu":["Kisumu Town","Kondele","Mamboleo","Milimani","Nyalenda","Manyatta","Migosi","Tom Mboya","Kajulu"],
+"Machakos":["Mlolongo","Athi River","Syokimau","Kitengela","Machakos Town","Kangundo","Mavoko","Katani"],
+"Kajiado":["Kitengela","Kajiado Town","Ongata Rongai","Ngong","Kiserian","Isinya","Loitokitok"],
+"Uasin Gishu":["Eldoret Town","Langas","Kapsoya","Annex","Elgon View","Pioneer","Huruma","Kimumu"],
+"Kakamega":["Kakamega Town","Lurambi","Mumias","Lugari","Butere","Khwisero"],
+"Kisii":["Kisii Town","Suneka","Nyamataro","Mosocho","Ogembo"],
+"Kilifi":["Kilifi Town","Malindi","Watamu","Mtwapa","Mariakani","Kaloleni"],
+"Kwale":["Kwale Town","Ukunda","Diani","Msambweni","Kinango"],
+"Garissa":["Garissa Town","Dadaab","Ijara","Balambala"],
+"Meru":["Meru Town","Maua","Nkubu","Timau","Mitunguu"],
+"Nyeri":["Nyeri Town","Karatina","Othaya","Mukurweini","Tetu"],
+"Murang'a":["Murang'a Town","Kangema","Kandara","Maragua","Kenol"],
+"Turkana":["Lodwar","Kakuma","Lokichoggio","Lokitaung"],
+"Kitui":["Kitui Town","Mwingi","Mutomo","Kyuso"],
+"Makueni":["Wote","Makindu","Mtito Andei","Kibwezi","Mbooni"],
+"Narok":["Narok Town","Narok North","Kilgoris","Ololulunga"],
+"Kericho":["Kericho Town","Litein","Kapsoit","Kipkelion"],
+"Bungoma":["Bungoma Town","Webuye","Kimilili","Sirisia","Malakisi"],
+"Busia":["Busia Town","Malaba","Nambale","Port Victoria"],
+"Siaya":["Siaya Town","Bondo","Ugunja","Yala","Ukwala"],
+"Homa Bay":["Homa Bay Town","Oyugis","Kendubay","Mbita","Ndhiwa"],
+"Migori":["Migori Town","Rongo","Awendo","Kehancha","Isebania"],
+"Embu":["Embu Town","Runyenjes","Manyatta","Siakago"],
+"Tharaka Nithi":["Chuka","Chogoria","Marimanti","Kathwana"],
+"Nyandarua":["Ol Kalou","Nyahururu","Engineer","Ol Joro Orok"],
+"Kirinyaga":["Kerugoya","Kutus","Sagana","Wanguru","Kagio"],
+"West Pokot":["Kapenguria","Makutano","Chepareria","Sigor"],
+"Trans Nzoia":["Kitale","Endebess","Kiminini","Kwanza"],
+"Baringo":["Kabarnet","Eldama Ravine","Marigat","Kabartonjo"],
+"Laikipia":["Nanyuki","Nyahururu","Rumuruti","Nanyuki Town"],
+"Bomet":["Bomet Town","Sotik","Chepalungu","Konoin"],
+"Vihiga":["Vihiga Town","Mbale","Luanda","Majengo"],
+"Taita Taveta":["Voi","Taveta","Wundanyi","Mwatate"],
+"Tana River":["Hola","Garsen","Bura","Madogo"],
+"Lamu":["Lamu Town","Mpeketoni","Witu","Faza"],
+"Wajir":["Wajir Town","Habaswein","Tarbaj","Wajir East"],
+"Mandera":["Mandera Town","El Wak","Rhamu","Takaba"],
+"Marsabit":["Marsabit Town","Moyale","Laisamis","North Horr"],
+"Isiolo":["Isiolo Town","Merti","Garbatulla","Kinna"],
+"Samburu":["Maralal","Baragoi","Wamba","Archers Post"],
+"Elgeyo Marakwet":["Iten","Kapsowar","Chepkorio","Kapcherop"],
+"Nandi":["Kapsabet","Nandi Hills","Kobujoi","Mosoriot"],
+"Kajiado":["Kitengela","Rongai","Ngong","Kajiado"],
+"Nyamira":["Nyamira Town","Nyansiongo","Keroka","Manga"]
+};
+
+function updateLocations(){let county=document.getElementById('lcounty').value;let locSelect=document.getElementById('lloc');locSelect.innerHTML='<option value="">Chagua Location</option>';if(countyLocations[county]){countyLocations[county].forEach(l=>{let o=document.createElement('option');o.value=l;o.textContent=l;locSelect.appendChild(o);});}}
+function updateFilterLocations(){let county=document.getElementById('filterCounty').value;let locSelect=document.getElementById('filterLocation');locSelect.innerHTML='<option value="">All Locations in '+county+'</option>';if(countyLocations[county]){countyLocations[county].forEach(l=>{let o=document.createElement('option');o.value=l;o.textContent=l;locSelect.appendChild(o);});}}
+
+let allKeja=[
+{name:"John",phone:"254700000000",county:"Nairobi",loc:"Mwiki",type:"Single",rent:"3500"},
+{name:"Mama Njeri",phone:"254711111111",county:"Kiambu",loc:"Ruiru",type:"Bedsitter",rent:"6500"},
+{name:"Ali",phone:"254722222222",county:"Mombasa",loc:"Bamburi",type:"1 Bedroom",rent:"12000"},
+{name:"Otieno",phone:"254733333333",county:"Kisumu",loc:"Kondele",type:"Single",rent:"3000"}
 ];
-let currentFilter="";
-function init(){
-const cs=document.getElementById("countySelect"),pc=document.getElementById("pCounty"),cg=document.getElementById("countyGrid");
-counties.forEach(c=>{let o=document.createElement("option");o.value=c;o.textContent=c;cs.appendChild(o);let o2=document.createElement("option");o2.value=c;o2.textContent=c;pc.appendChild(o2);let d=document.createElement("span");d.className="countyTag";d.textContent=c;d.onclick=()=>{cs.value=c;filterKeja();window.scrollTo(0,380)};cg.appendChild(d);});
-render(keja);
-}
-function render(list){const g=document.getElementById("kejaGrid");g.innerHTML="";list.forEach(k=>{g.innerHTML+=`<div class="card"><img src="${k.img}"><div class="cardBody"><span class="badge">${k.county.toUpperCase()}</span><h4 style="margin:6px 0">${k.title}</h4><p style="font-size:13px;color:#666">📍 ${k.estate}, ${k.county}</p><p class="price">Ksh ${k.price.toLocaleString()}/mo • ${k.type}</p><button class="btn btn-call" onclick="alert('Lipa 300 kwa Pochi 0794147629 upate namba')">📞 Piga Landlord</button><button class="btn btn-mpesa" onclick="alert('Lipa 300 via Pochi 0794147629')">🔓 Fungua Namba</button></div></div>`})}
-function filterKeja(){const s=document.getElementById("searchInput").value.toLowerCase(),c=document.getElementById("countySelect").value,t=document.getElementById("typeSelect").value;let f=keja.filter(k=>(!s||k.estate.toLowerCase().includes(s)||k.county.toLowerCase().includes(s))&&(!c||k.county===c)&&(!t||k.type===t)&&(!currentFilter||k.type===currentFilter||k.county===currentFilter||k.estate===currentFilter));render(f)}
-function setChip(el,v){document.querySelectorAll(".chip").forEach(x=>x.classList.remove("active"));el.classList.add("active");currentFilter=v;filterKeja()}
-function openPost(){document.getElementById("postModal").style.display="flex"}function closePost(){document.getElementById("postModal").style.display="none"}
-function submitKeja(){const county=document.getElementById("pCounty").value,estate=document.getElementById("pEstate").value||"Mtaa",price=document.getElementById("pPrice").value||3500,type=document.getElementById("pType").value;keja.unshift({title:type+" Ksh "+price,estate,county,type,price:parseInt(price),img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=500"});render(keja);closePost();alert("Imewekwa! Lipa Pochi 0794147629")}
-init();
+function render(list){let d=document.getElementById('listings');d.innerHTML='';list.forEach(k=>{let c=document.createElement('div');c.className='card';c.onclick=()=>showLoc(k);c.innerHTML=`<div class="card-body"><span class="badge">${k.county}</span> <span class="badge" style="background:#25D366">${k.loc}</span> <b>${k.type}</b><br>Rent: Ksh ${k.rent} | Landlord: ${k.name}<br><small>📍 ${k.loc}, ${k.county} County</small><br><span style="color:#0a8a0a;font-weight:bold">📞 ${k.phone} - Direct!</span><br><a href="https://wa.me/${k.phone}" class="wa-btn" onclick="event.stopPropagation()">Chat ${k.name} Direct - ${k.phone}</a></div>`;d.appendChild(c);});}
+function showLoc(k){document.getElementById('modalContent').innerHTML=`<h3>📍 ${k.loc}, ${k.county} County</h3><p><b>${k.type}</b> - Ksh ${k.rent}/month</p><p>Landlord: ${k.name}</p><p><b>Number Inaonekana Direct:</b> ${k.phone}</p><p><b>Exact Location:</b> ${k.loc}, ${k.county}</p><a href="https://www.google.com/maps/search/?api=1&query=${k.loc}+${k.county}+Kenya" target="_blank" class="wa-btn" style="background:#0a8a0a">🗺️ ONA ${k.loc} KWA GOOGLE MAP</a><br><a href="https://wa.me/${k.phone}?text=Habari ${k.name}, nimeona nyumba yako ya ${k.type} ${k.loc} kwa Keja Kenya Mzima" class="wa-btn">💬 CHAT LANDLORD DIRECT WHATSAPP</a><br><button onclick="document.getElementById('locModal').style.display='none'" style="width:100%;padding:10px;border:none;background:#eee;border-radius:8px">Funga</button>`;document.getElementById('locModal').style.display='block';}
+function checkPayment(){let name=document.getElementById('lname').value;let phone=document.getElementById('lphone').value;let county=document.getElementById('lcounty').value;let loc=document.getElementById('lloc').value||document.getElementById('llocOther').value;let type=document.getElementById('ltype').value;let rent=document.getElementById('lrent').value;let code=document.getElementById('mpesaCode').value;if(!name||!phone||!county||!loc||!code){alert('Jaza Jina, Namba, County, Location na M-Pesa Code!');return;}let k={name,phone,county,loc,type,rent};allKeja.unshift(k);render(allKeja);document.getElementById('postForm').style.display='none';alert('Hongera '+name+'! Nyumba yako ya '+loc+', '+county+' ime-post! Tenant wata-ona number yako '+phone+' direct na location kwa Map!');}
+function filterKeja(){let c=document.getElementById('filterCounty').value.toLowerCase();let l=document.getElementById('filterLocation').value.toLowerCase();let f=allKeja.filter(k=>(c==''||k.county.toLowerCase()==c||k.county.toLowerCase().includes(c))&&(l==''||k.loc.toLowerCase().includes(l)));render(f);}
+render(allKeja);
 </script>
 </body>
 </html>
