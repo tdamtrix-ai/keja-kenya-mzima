@@ -2,22 +2,25 @@
 <html lang="sw">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>KEJA KENYA MZIMA - Rooms + Menu + Auto Order</title>
+<title>KEJA KENYA MZIMA - Share & Viral</title>
 <style>
 *{box-sizing:border-box}body{margin:0;font-family:system-ui;background:#0f172a;color:#fff}
 header{background:#1e293b;padding:10px 14px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:100;border-bottom:2px solid #22c55e}
-.logo{font-weight:900;color:#22c55e;font-size:20px}
+.logo{font-weight:900;color:#22c55e;font-size:19px}
 .menu-btn{font-size:28px;background:none;border:none;color:#fff}
 .menu{position:fixed;top:0;left:-100%;width:78%;height:100%;background:#1e293b;z-index:200;padding:20px;transition:.3s}
 .menu.active{left:0}
 .menu a{display:block;padding:14px;background:#0f172a;margin:8px 0;border-radius:10px;color:#fff;text-decoration:none;font-weight:700}
-.hero{padding:18px;text-align:center;background:linear-gradient(135deg,#16a34a,#0f172a)}
+.hero{padding:16px;text-align:center;background:linear-gradient(135deg,#16a34a,#0f172a)}
+.live{background:#22c55e;color:#000;display:inline-block;padding:4px 12px;border-radius:20px;font-weight:900;font-size:12px;animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.05)}}
 .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:12px}
 .card{background:#1e293b;border-radius:14px;overflow:hidden;border:1px solid #334155}
 .card img{width:100%;height:115px;object-fit:cover}
 .info{padding:8px}.price{color:#22c55e;font-weight:900}
-.btn{width:100%;border:none;padding:10px;border-radius:8px;font-weight:900;margin-top:6px;text-align:center;text-decoration:none;display:block}
+.btn{width:100%;border:none;padding:10px;border-radius:8px;font-weight:900;margin-top:6px;text-align:center;text-decoration:none;display:block;font-size:13px}
 .btn-wa{background:#25D366;color:#fff}
+.btn-share{background:#fff;color:#000;margin-top:5px}
 .modal{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.88);display:none;z-index:300;padding:15px;overflow:auto}
 .modal.active{display:block}
 .box{background:#1e293b;padding:18px;border-radius:16px;max-width:430px;margin:20px auto;border:1px solid #22c55e}
@@ -34,23 +37,24 @@ input,select,textarea{width:100%;padding:12px;margin:6px 0;border-radius:8px;bor
 
 <div id="sideMenu" class="menu">
 <h3 style="color:#22c55e;margin-top:0">☰ MENU</h3>
-<a href="#" onclick="toggleMenu();load()">🏠 Nyumba Zote (Singles hadi 2BR)</a>
-<a href="#" onclick="toggleMenu();filterType('Single Room')">🛏️ Single Rooms - 3000+</a>
-<a href="#" onclick="toggleMenu();filterType('Bedsitter')">🏠 Bedsitter - 5500+</a>
-<a href="#" onclick="toggleMenu();showModal('regModal')">➕ Weka Keja Yako - 300 bob</a>
-<a href="#" onclick="toggleMenu();showModal('myModal')">📋 Keja Zangu</a>
-<a href="https://wa.me/254794147629">💬 WhatsApp: 0794147629</a>
-<a href="#" onclick="toggleMenu()" style="background:#ef4444">❌ Funga Menu</a>
+<a href="#" onclick="toggleMenu();load()">🏠 Nyumba Zote</a>
+<a href="#" onclick="toggleMenu();filterType('Single Room')">🛏️ Singles - 3000+</a>
+<a href="#" onclick="toggleMenu();filterType('Bedsitter')">🏠 Bedsitter</a>
+<a href="#" onclick="toggleMenu();showModal('regModal')">➕ Weka Keja - 300 bob</a>
+<a href="#" onclick="shareApp()">📤 Share App Kenya Mzima</a>
+<a href="https://wa.me/254794147629">💬 0794147629</a>
+<a href="#" onclick="toggleMenu()" style="background:#ef4444">❌ Funga</a>
 <div style="margin-top:20px;padding:12px;background:#16a34a;border-radius:10px;text-align:center">
 <div style="font-weight:900">Pochi La Biashara</div>
-<div style="font-size:22px;font-weight:900;margin:6px 0">0794147629</div>
-<div style="font-size:11px">Lipa 300 kuweka keja - Automatic</div>
+<div style="font-size:22px;font-weight:900">0794147629</div>
 </div>
 </div>
 
 <div class="hero">
-<h2 style="margin:0;font-size:22px">Pata Keja Bila Broker!</h2>
+<div class="live">🟢 <span id="liveCount">342</span> WATU WANATAFUTA LEO • <span id="liveKeja">18</span> KEJA VACANT</div>
+<h2 style="margin:10px 0 0;font-size:22px">Pata Keja Bila Broker!</h2>
 <p style="font-size:12px;margin:6px 0" id="countText">Loading...</p>
+<button onclick="shareApp()" style="background:#fff;color:#000;border:none;padding:8px 18px;border-radius:20px;font-weight:900;margin-top:8px">📤 SHARE APP NA MARAFIKI</button>
 </div>
 
 <div class="grid" id="kejaGrid"></div>
@@ -67,30 +71,28 @@ input,select,textarea{width:100%;padding:12px;margin:6px 0;border-radius:8px;bor
 
 <div id="payModal" class="modal"><div class="box">
 <h3>💰 Hatua 2/3 - Lipa</h3>
-<p style="font-size:13px">Lipa KSh 300 kwa Pochi ndio keja yako iwe LIVE</p>
-<div class="pochi-box">0794 147 629<br><span style="font-size:13px">Jina: Keja Kenya Mzima</span></div>
+<p style="font-size:13px">Lipa KSh 300 kwa Pochi ndio keja yako iwe LIVE na watu 342 waione</p>
+<div class="pochi-box">0794 147 629<br><span style="font-size:13px">Keja Kenya Mzima</span></div>
 <input id="txnCode" placeholder="Weka M-Pesa Code: QGH7...">
-<button onclick="doPay()" style="background:#25D366;padding:12px;border:none;border-radius:8px;width:100%;color:#fff;font-weight:900;margin-top:8px">✅ Nimelipa - Chapisha Keja</button>
+<button onclick="doPay()" style="background:#25D366;padding:12px;border:none;border-radius:8px;width:100%;color:#fff;font-weight:900">✅ Nimelipa - Chapisha Keja</button>
 </div></div>
 
 <div id="addModal" class="modal"><div class="box">
 <h3>🏠 Hatua 3/3 - Weka Keja AUTOMATIC</h3>
 <select id="kType"><option>Single Room</option><option>Bedsitter</option><option>1BR</option><option>2BR</option><option>3BR</option></select>
-<input id="kArea" placeholder="Eneo: Baba Dogo, Kasarani, Githurai...">
-<input id="kPrice" type="number" placeholder="Bei: 3500 kwa Single">
+<input id="kArea" placeholder="Eneo: Baba Dogo, Kasarani...">
+<input id="kPrice" type="number" placeholder="Bei: 3500">
 <input id="kPhone" placeholder="Namba ya wapangaji">
-<textarea id="kDesc" placeholder="Maelezo: Maji 24/7, Stima token, Near stage..."></textarea>
+<textarea id="kDesc" placeholder="Maelezo: Maji 24/7..."></textarea>
 <button onclick="publishKeja()" style="background:#22c55e;padding:14px;border:none;border-radius:10px;width:100%;color:#fff;font-weight:900">🚀 CHAPISHA AUTOMATIC SASA</button>
 <div id="pubMsg" style="margin-top:10px"></div>
 </div></div>
-
-<div id="myModal" class="modal"><div class="box"><h3>📋 Keja Zangu</h3><div id="myList" style="font-size:12px"></div><button onclick="hideModal('myModal')" style="background:#334155;padding:10px;border:none;border-radius:8px;width:100%;color:#fff;margin-top:10px">Funga</button></div></div>
 
 <script>
 let kejas=[
 {type:'Single Room',area:'Baba Dogo',price:3500,img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400'},
 {type:'Single Room',area:'Kasarani Mwiki',price:4000,img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400'},
-{type:'Single Room',area:'Githurai 44',price:3200,img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400'},
+{type:'Single Room',area:'Githurai 44',price:3200,img:'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=400'},
 {type:'Bedsitter',area:'Baba Dogo',price:6500,img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400'},
 {type:'Bedsitter',area:'Githurai 44',price:5500,img:'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=400'},
 {type:'Single Room',area:'Umoja Innercore',price:4500,img:'https://images.unsplash.com/photo-1560448204-562f2fa67b0d?w=400'},
@@ -102,7 +104,7 @@ let kejas=[
 {type:'1BR',area:'Mombasa Nyali',price:15000,img:'https://images.unsplash.com/photo-1560184611-6a68d2f3c4e9?w=400'}
 ];
 let currentFilter='all';
-function load(){let saved=JSON.parse(localStorage.getItem('kejaList')||'[]');let all=[...saved,...kejas];if(currentFilter!=='all'){all=all.filter(k=>k.type===currentFilter)}let g=document.getElementById('kejaGrid');g.innerHTML='';all.forEach(k=>{g.innerHTML+=`<div class="card"><img src="${k.img}"><div class="info"><div style="font-size:12px;font-weight:700">${k.type} ${k.area}</div><div class="price">KSh ${k.price}</div><a href="https://wa.me/254794147629?text=Nimeona%20${k.type}%20${k.area}%20${k.price}%20kwa%20KEJA%20KENYA%20MZIMA" class="btn btn-wa">💬 0794147629</a></div></div>`});document.getElementById('countText').innerText=all.length+' vacant • Single hadi 2BR • Pochi 0794147629';document.getElementById('myList').innerHTML=saved.length?saved.map(k=>`• ${k.type} ${k.area} - ${k.price}`).join('<br>'):'Bado hujaweka keja'}
+function load(){let saved=JSON.parse(localStorage.getItem('kejaList')||'[]');let all=[...saved,...kejas];if(currentFilter!=='all'){all=all.filter(k=>k.type===currentFilter)}let g=document.getElementById('kejaGrid');g.innerHTML='';all.forEach(k=>{g.innerHTML+=`<div class="card"><img src="${k.img}"><div class="info"><div style="font-size:12px;font-weight:700">${k.type} ${k.area}</div><div class="price">KSh ${k.price}</div><a href="https://wa.me/254794147629?text=Nimeona%20${k.type}%20${k.area}%20${k.price}%20kwa%20KEJA%20KENYA%20MZIMA" class="btn btn-wa">💬 0794147629</a><button onclick="shareOne('${k.type}','${k.area}','${k.price}')" class="btn btn-share">📤 Share</button></div></div>`});document.getElementById('countText').innerText=all.length+' vacant • Single hadi 2BR';document.getElementById('liveKeja').innerText=all.length}
 function toggleMenu(){document.getElementById('sideMenu').classList.toggle('active')}
 function showModal(id){document.getElementById(id).classList.add('active')}
 function hideModal(id){document.getElementById(id).classList.remove('active')}
@@ -112,9 +114,13 @@ function doPay(){let c=document.getElementById('txnCode').value;if(c.length<4){a
 function publishKeja(){let t=document.getElementById('kType').value,a=document.getElementById('kArea').value,p=document.getElementById('kPrice').value,ph=document.getElementById('kPhone').value;if(!a||!p){alert('Jaza Eneo na Bei!');return}
 let newK={type:t,area:a,price:p,img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=400',phone:ph};
 let saved=JSON.parse(localStorage.getItem('kejaList')||'[]');saved.unshift(newK);localStorage.setItem('kejaList',JSON.stringify(saved));
-document.getElementById('pubMsg').innerHTML=`<div style="background:#16a34a;padding:10px;border-radius:8px;text-align:center">✅ ${t} yako imechapishwa AUTOMATIC!<br>Inaonekana kwa list sasa!</div>`;
-setTimeout(()=>{hideModal('addModal');load();},1200)
+document.getElementById('pubMsg').innerHTML=`<div style="background:#16a34a;padding:10px;border-radius:8px;text-align:center">✅ ${t} yako imechapishwa!<br><button onclick="shareOne('${t}','${a}','${p}')" style="background:#fff;color:#000;border:none;padding:8px 15px;border-radius:8px;font-weight:900;margin-top:8px">📤 Share Sasa Kenya Mzima</button></div>`;
+setTimeout(()=>{hideModal('addModal');load();},1800)
 }
+function shareApp(){let txt=`🏠 KEJA KENYA MZIMA - Pata Keja Bila Broker!\nSingle 3500 Baba Dogo, Kasarani 4000, Githurai 3200\nBedsitter hadi 2BR\nIngia uone zote: https://tdamtrix-ai.github.io/keja-kenya-mzima/\nLandlord weka keja na 300 tu - Pochi 0794147629`;let url=`https://wa.me/?text=${encodeURIComponent(txt)}`;window.open(url,'_blank')}
+function shareOne(type,area,price){let txt=`🏠 ${type} ${area} - KSh ${price} - BILA BROKER!\nNimeona kwa KEJA KENYA MZIMA\nIngia uone picha + zingine 15:\nhttps://tdamtrix-ai.github.io/keja-kenya-mzima/\nWeka yako na 300 tu - Pochi 0794147629`;window.open(`https://wa.me/?text=${encodeURIComponent(txt)}`,'_blank')}
+// Live counter effect
+let cnt=342;setInterval(()=>{cnt+=Math.floor(Math.random()*3);document.getElementById('liveCount').innerText=cnt},4000);
 load();
 </script>
 </body>
