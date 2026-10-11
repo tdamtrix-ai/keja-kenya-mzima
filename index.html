@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Keja-K - Nyumba za Kupangisha Kenya | County 47</title>
-<meta name="description" content="Tafuta keja Kenya mzima - 47 counties. Mwenye nyumba anaweka direct, 0 broker fee.">
+<title>Keja-K - Nyumba Kenya Mzima - Bila Broker</title>
 <style>
 *{box-sizing:border-box;margin:0;padding:0;font-family:Arial,sans-serif}
 body{background:#f1f5f1}
@@ -12,7 +11,7 @@ header{background:#0b7a0b;color:white;padding:12px 15px;position:sticky;top:0;z-
 header h1{font-size:18px} header h1 span{color:#ffcc00}
 .btn-add{background:#ffcc00;color:#000;border:none;padding:8px 14px;border-radius:20px;font-weight:bold;cursor:pointer}
 .hero{background:#0b7a0b;color:white;text-align:center;padding:25px 15px 90px 15px}
-.hero h2{font-size:28px}.hero h2 span{color:#ffcc00}.hero p{margin-top:8px;font-size:14px;opacity:0.9}
+.hero h2{font-size:28px}.hero h2 span{color:#ffcc00}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:18px}
 .stat-box{background:rgba(255,255,255,0.15);border-radius:12px;padding:12px}
 .stat-box b{display:block;font-size:20px;color:#ffcc00}
@@ -29,11 +28,9 @@ header h1{font-size:18px} header h1 span{color:#ffcc00}
 .tag-county{background:#e0f5e0;color:#0b7a0b}.tag-loc{background:#e0ecff;color:#0b4bb7}
 .price{float:right;color:#0b7a0b;font-weight:bold;font-size:18px}
 .meta{font-size:13px;color:#555;margin-bottom:8px}
-.btns{display:flex;gap:6px}
-.btns button{flex:1;padding:10px;border:none;border-radius:20px;font-weight:bold;cursor:pointer;font-size:13px}
+.btns{display:flex;gap:6px}.btns button{flex:1;padding:10px;border:none;border-radius:20px;font-weight:bold;cursor:pointer;font-size:13px}
 .btn-call{background:#0b7a0b;color:white}.btn-wa{background:#25D366;color:white}.btn-sms{background:#1976d2;color:white}
 .btn-del{width:100%;margin-top:8px;background:#ffebee;color:#c62828;border:1px solid #ffcdd2;padding:10px;border-radius:20px;font-weight:bold;cursor:pointer}
-.small{font-size:11px;text-align:center;color:#888;margin-top:4px}
 #modal,#viewModal{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.6);display:none;z-index:200;overflow:auto;padding:20px}
 .modal-box{background:white;border-radius:15px;padding:15px;max-width:500px;margin:auto}
 .modal-box input,.modal-box select{width:100%;padding:10px;margin:6px 0;border:1px solid #ccc;border-radius:10px}
@@ -44,15 +41,15 @@ header h1{font-size:18px} header h1 span{color:#ffcc00}
 </head>
 <body>
 <header><h1>Nyumba Kenya <span>Mzima</span></h1><button class="btn-add" onclick="openModal()">+ Weka Nyumba</button></header>
-<div class="trial-top" id="trialBar">Jaribio la siku 3 BURE!</div>
+<div class="trial-top" id="trialBar">Jaribio la siku 3 BURE - Weka 3 BURE!</div>
 <div class="hero">
 <h2>Kenya Mzima, <span>Nyumba Moja</span><br>Pata Bila Broker</h2>
 <p>Mwenye nyumba anaweka direct na picha, 0 broker fee</p>
-<div class="stats"><div class="stat-box"><b>47</b><span>COUNTIES</span></div><div class="stat-box"><b>1,200+</b><span>NYUMBA</span></div><div class="stat-box"><b>4,500+</b><span>WAPANGAJI</span></div><div class="stat-box"><b>98%</b><span>HAPPY</span></div></div>
+<div class="stats"><div class="stat-box"><b>47</b><span>COUNTIES</span></div><div class="stat-box"><b id="countHouses">0</b><span>NYUMBA</span></div><div class="stat-box"><b>4,500+</b><span>WAPANGAJI</span></div><div class="stat-box"><b>98%</b><span>HAPPY</span></div></div>
 </div>
 <div class="search-container">
 <input type="text" id="searchInput" placeholder="Tafuta: Mwiki, Bamburi, Kisumu..." oninput="render()">
-<div class="search-row"><select id="countyFilter" onchange="updateLocations();render()"><option value="">County Zote 47</option></select><select id="locationFilter" onchange="render()"><option value="">Location Zote</option></select></div>
+<div class="search-row"><select id="countyFilter" onchange="render()"><option value="">County Zote 47</option></select><select id="locationFilter" onchange="render()"><option value="">Location Zote</option></select></div>
 <div class="search-row"><select id="typeFilter" onchange="render()"><option value="">Aina Zote</option><option>Single</option><option>Bedsitter</option><option>1 Bedroom</option><option>2 Bedroom</option><option>3 Bedroom</option></select><button class="btn-search" onclick="render()">TAFUTA NYUMBA</button></div>
 </div>
 <div class="free-trial">🎉 <b>FREE TRIAL: Weka nyumba 3 BURE!</b><br><span id="trialCount"></span></div>
@@ -66,47 +63,47 @@ header h1{font-size:18px} header h1 span{color:#ffcc00}
 const counties=["Mombasa","Kwale","Kilifi","Tana River","Lamu","Taita-Taveta","Garissa","Wajir","Mandera","Marsabit","Isiolo","Meru","Tharaka-Nithi","Embu","Kitui","Machakos","Makueni","Nyandarua","Nyeri","Kirinyaga","Murang'a","Kiambu","Turkana","West Pokot","Samburu","Trans Nzoia","Uasin Gishu","Elgeyo-Marakwet","Nandi","Baringo","Laikipia","Nakuru","Narok","Kajiado","Kericho","Bomet","Kakamega","Vihiga","Bungoma","Busia","Siaya","Kisumu","Homa Bay","Migori","Kisii","Nyamira","Nairobi"];
 const countyFilter=document.getElementById('countyFilter'),countySel=document.getElementById('countySel'),locationFilter=document.getElementById('locationFilter');
 counties.forEach(c=>{countyFilter.innerHTML+=`<option value="${c}">${c}</option>`;countySel.innerHTML+=`<option value="${c}">${c}</option>`;});
-function updateLocations(){locationFilter.innerHTML='<option value="">Location Zote</option><option>Mwiki</option><option>Bamburi</option><option>Kisumu</option><option>Ruiru</option><option>Kasarani</option>';}
-updateLocations();
+locationFilter.innerHTML='<option value="">Location Zote</option><option>Mwiki</option><option>Bamburi</option><option>Kisumu</option><option>Ruiru</option><option>Kasarani</option>';
 let houses=JSON.parse(localStorage.getItem('kejaK_houses')||'null')||[
 {id:1,county:'Nairobi',loc:'Mwiki',type:'Single',price:3500,mwenye:'John',phone:'0794147629',img:'https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600',coords:'-1.2,36.9'},
-{id:2,county:'Kiambu',loc:'Ruiru',type:'Bedsitter',price:6500,mwenye:'Mama Njeri',phone:'0720000000',img:'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=600',coords:'-1.1,36.9'},
-{id:3,county:'Nairobi',loc:'Kasarani',type:'Bedsitter',price:6500,mwenye:'Damtrix',phone:'0794147629',img:'https://images.unsplash.com/photo-1484154218962-a197022b5858?w=600',coords:'-1.22,36.90'}
+{id:2,county:'Kiambu',loc:'Ruiru',type:'Bedsitter',price:6500,mwenye:'Mama Njeri',phone:'0720000000',img:'https://images.unsplash.com/photo-1502672023488-70e25813eb80?w=600',coords:'-1.1,36.9'}
 ];
 let firstVisit=localStorage.getItem('keja_first');if(!firstVisit){firstVisit=Date.now();localStorage.setItem('keja_first',firstVisit);}
 let days=(Date.now()-parseInt(firstVisit))/(1000*60*60*24);let trialExpired=days>3;
 if(trialExpired){document.getElementById('trialBar').innerHTML='⏰ Trial ya siku 3 imeisha! Lipa 200/= 0794147629';document.getElementById('trialBar').style.background='#ff4444';document.getElementById('trialBar').style.color='white';}
 function saveLS(){localStorage.setItem('kejaK_houses',JSON.stringify(houses));}
-function updateTrial(){let c=houses.length;let maxFree=3;let bado=maxFree-c;if(bado<0)bado=0;document.getElementById('trialCount').innerText=`Umeweka ${c} / ${maxFree} Bure - Bado ${bado} free`; if(c>=maxFree){document.getElementById('trialCount').innerText+=` | Trial ya siku 3 - Baada ya hapo number inakata!`;}}
 function render(){
 let q=document.getElementById('searchInput').value.toLowerCase(),cf=document.getElementById('countyFilter').value,lf=document.getElementById('locationFilter').value,tf=document.getElementById('typeFilter').value,html='';
-houses.filter(h=>{
+let filtered=houses.filter(h=>{
 if(cf && h.county!==cf) return false;
 if(lf &&!h.loc.toLowerCase().includes(lf.toLowerCase())) return false;
 if(tf && h.type!==tf) return false;
 if(q &&!((h.loc+h.type+h.county+h.mwenye).toLowerCase().includes(q))) return false;
 return true;
-}).forEach(h=>{
-html+=`<div class="card"><img src="${h.img}" onclick="openView(${h.id})"><div class="card-body"><span class="tag tag-county">${h.county}</span><span class="tag tag-loc">${h.loc}</span><span class="price">Ksh ${h.price}</span><h3>${h.type} - ${h.loc}</h3><div class="meta">📍 ${h.loc}, ${h.county} • Mwenye: ${h.mwenye}</div><div class="btns"><button class="btn-call" onclick="callMwenye('${h.phone}')">📞 PIGA SIMU</button><button class="btn-wa" onclick="waMwenye('${h.phone}')">💬 WHATSAPP</button><button class="btn-sms" onclick="smsMwenye('${h.phone}')">✉️ SMS</button></div><button class="btn-del" onclick="deleteHouse(${h.id})">🗑️ FUTA HII PICHA YANGU</button><div class="small">📌 Coords: ${h.coords} | Namba ya Mwenye Nyumba: ${h.mwenye}</div></div></div>`;
 });
-document.getElementById('houses').innerHTML=html||'<p style="text-align:center;padding:20px">Hakuna nyumba</p>';updateTrial();
+document.getElementById('countHouses').innerText=houses.length;
+let c=houses.length;let maxFree=3;let bado=maxFree-c;if(bado<0)bado=0;document.getElementById('trialCount').innerText=`Umeweka ${c} / ${maxFree} Bure - Bado ${bado} free`;
+filtered.forEach(h=>{
+html+=`<div class="card"><img src="${h.img}" onclick="openView(${h.id})"><div class="card-body"><span class="tag tag-county">${h.county}</span><span class="tag tag-loc">${h.loc}</span><span class="price">Ksh ${h.price}</span><h3>${h.type} - ${h.loc}</h3><div class="meta">📍 ${h.loc}, ${h.county} • Mwenye: ${h.mwenye}</div><div class="btns"><button class="btn-call" onclick="callMwenye('${h.phone}')">📞 PIGA SIMU</button><button class="btn-wa" onclick="waMwenye('${h.phone}')">💬 WHATSAPP</button><button class="btn-sms" onclick="smsMwenye('${h.phone}')">✉️ SMS</button></div><button class="btn-del" onclick="deleteHouse(${h.id})">🗑️ FUTA HII PICHA YANGU</button><div class="small">📌 ${h.coords}</div></div></div>`;
+});
+document.getElementById('houses').innerHTML=html||'<p style="text-align:center;padding:20px">Hakuna nyumba</p>';
 }
 function callMwenye(p){if(trialExpired){alert('Trial ya siku 3 imeisha! Lipa 200/= 0794147629');return;}location.href='tel:'+p;}
-function waMwenye(p){if(trialExpired){alert('Trial imeisha! Lipa 200/=');return;}let c=p.replace(/[^0-9]/g,'');if(c.startsWith('0'))c='254'+c.substring(1);window.open('https://wa.me/'+c,'_blank');}
-function smsMwenye(p){if(trialExpired){alert('Trial imeisha!');return;}location.href='sms:'+p;}
+function waMwenye(p){let c=p.replace(/[^0-9]/g,'');if(c.startsWith('0'))c='254'+c.substring(1);window.open('https://wa.me/'+c,'_blank');}
+function smsMwenye(p){location.href='sms:'+p;}
 function openView(id){let h=houses.find(x=>x.id==id);document.getElementById('viewBox').innerHTML=`<img src="${h.img}" style="width:100%;height:250px;object-fit:cover;border-radius:10px"><div style="padding:10px"><h3>${h.type} - ${h.loc}</h3><p>📍 ${h.loc}, ${h.county}</p><p>Mwenye: ${h.mwenye} - ${h.phone}</p><p>📌 ${h.coords} <a href="https://maps.google.com/?q=${h.coords}" target="_blank">Ona Map</a></p><button class="btn-call" style="width:100%;padding:12px;margin:6px 0" onclick="callMwenye('${h.phone}')">📞 PIGA SIMU</button><button class="btn-wa" style="width:100%;padding:12px;margin:6px 0" onclick="waMwenye('${h.phone}')">💬 WHATSAPP</button><button style="width:100%;padding:12px;background:#e53935;color:white;border:none;border-radius:20px;margin-top:6px" onclick="deleteHouse(${h.id})">🗑️ FUTA HII PICHA YANGU</button><button class="btn-close" style="width:100%;padding:12px;margin-top:8px" onclick="closeView()">Funga</button></div>`;document.getElementById('viewModal').style.display='block';}
 function closeView(){document.getElementById('viewModal').style.display='none';}
-function deleteHouse(id){if(!confirm('Una uhakika unataka kufuta hii picha?'))return;houses=houses.filter(h=>h.id!=id);saveLS();render();closeView();alert('✅ Picha imefutwa!');}
-function openModal(){if(trialExpired){alert('Trial ya siku 3 imeisha! Lipa 200/= 0794147629');return;}if(houses.length>=3){if(!confirm('Umefikisha 3 BURE za trial! Lipa 200/= kuendelea?'))return;}document.getElementById('modal').style.display='block';}
+function deleteHouse(id){if(!confirm('Una uhakika kufuta?'))return;houses=houses.filter(h=>h.id!=id);saveLS();render();closeView();alert('✅ Imefutwa!');}
+function openModal(){if(trialExpired){alert('Trial ya siku 3 imeisha! Lipa 200/=');return;}if(houses.length>=3){if(!confirm('Umefikisha 3 BURE! Lipa 200/= kuendelea?'))return;}document.getElementById('modal').style.display='block';}
 function closeModal(){document.getElementById('modal').style.display='none';}
 function getLoc(){if(navigator.geolocation){navigator.geolocation.getCurrentPosition(pos=>{document.getElementById('coords').value=pos.coords.latitude.toFixed(5)+','+pos.coords.longitude.toFixed(5);});}}
 function saveHouse(){
 let m=document.getElementById('mwenye').value,ph=document.getElementById('phone').value,co=document.getElementById('countySel').value,lo=document.getElementById('location').value,ty=document.getElementById('typeSel').value,pr=document.getElementById('price').value,coords=document.getElementById('coords').value||'Nairobi',file=document.getElementById('picha').files[0];
 if(!m||!ph||!lo||!pr){alert('Jaza kila kitu');return;}
 let newId=Date.now();let imgUrl='https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600';
-if(file){let r=new FileReader();r.onload=e=>{pushHouse(m,ph,co,lo,ty,pr,coords,e.target.result,newId);};r.readAsDataURL(file);}else{pushHouse(m,ph,co,lo,ty,pr,coords,imgUrl,newId);}
+const pushHouse=(img)=>{houses.unshift({id:newId,county:co,loc:lo,type:ty,price:pr,mwenye:m,phone:ph,img:img,coords:coords});saveLS();render();closeModal();alert('✅ Nyumba imewekwa!');};
+if(file){let r=new FileReader();r.onload=e=>{pushHouse(e.target.result);};r.readAsDataURL(file);}else{pushHouse(imgUrl);}
 }
-function pushHouse(m,ph,co,lo,ty,pr,coords,imgUrl,newId){houses.unshift({id:newId,county:co,loc:lo,type:ty,price:pr,mwenye:m,phone:ph,img:imgUrl,coords:coords});saveLS();render();closeModal();alert('Nyumba imewekwa!');}
 render();
 </script>
 </body>
