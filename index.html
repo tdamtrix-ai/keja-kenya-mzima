@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="google" content="notranslate">
-<title>Nyumba Kenya Mzima - 2355 Mtaa</title>
+<title>Nyumba Kenya Mzima - FREE FOR NOW</title>
 <style>
 *{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,sans-serif;background:#f1f5f9}
 .topbar{background:#15803d;color:#fff;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
 .topbar h1{font-size:18px;font-weight:800}.topbar h1 span{color:#facc15}
 .btn-weka{background:#facc15;color:#000;border:none;padding:8px 16px;border-radius:20px;font-weight:800;font-size:13px}
-.yellow-banner{background:#facc15;text-align:center;padding:8px;font-weight:800;font-size:13px}
+.free-top-banner{background:#22c55e;color:#fff;text-align:center;padding:10px;font-weight:800;font-size:14px;letter-spacing:.3px}
 .hero{background:#15803d;color:#fff;padding:24px 16px 30px;text-align:center}
 .hero h2{font-size:26px;font-weight:900;line-height:1.2}.hero h2 span{color:#facc15}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
@@ -18,7 +18,7 @@
 .search-box input,.search-box select{width:100%;padding:12px;border-radius:10px;border:1px solid #e2e8f0;margin-bottom:8px;font-size:14px}
 .row{display:flex;gap:8px}.row select{flex:1}
 .btn-search{width:100%;background:#15803d;color:#fff;border:none;padding:14px;border-radius:10px;font-weight:800}
-.free{margin:12px;background:#fefce8;border:2px dashed #15803d;border-radius:10px;padding:10px;text-align:center;font-size:12px}
+.free{margin:12px;background:#dcfce7;border:2px solid #15803d;border-radius:10px;padding:12px;text-align:center;font-size:13px;font-weight:600;color:#166534}
 .card{margin:12px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08)}
 .card img{width:100%;height:230px;object-fit:cover;display:block}
 .card-body{padding:12px 14px 14px}
@@ -37,11 +37,11 @@
 </head>
 <body>
 <div class="topbar"><h1>Nyumba Kenya <span>Mzima</span></h1><button class="btn-weka">+ Weka Nyumba</button></div>
-<div class="yellow-banner">Jaribio la siku 3 BURE!</div>
+<div class="free-top-banner">🎉 FREE FOR THE TIME BEING - WEKA NYUMBA BURE KABISA! 🎉</div>
 <div class="hero">
 <h2>Kenya Mzima, <span>Nyumba Moja</span> Pata Bila Broker</h2>
 <p>Mwenye nyumba anaweka direct na picha, 0 broker fee</p>
-<div class="stats"><div class="stat"><b>47</b>COUNTIES</div><div class="stat"><b id="tot">2355+</b>MITAA</div><div class="stat"><b>4500+</b>WAPANGAJI</div><div class="stat"><b>98%</b>HAPPY</div></div>
+<div class="stats"><div class="stat"><b>47</b>COUNTIES</div><div class="stat"><b id="tot">1200+</b>MITAA</div><div class="stat"><b>4500+</b>WAPANGAJI</div><div class="stat"><b>98%</b>HAPPY</div></div>
 </div>
 <div class="search-box">
 <input id="q" placeholder="Tafuta: Mwiki, Bamburi, Kisumu, Dandora, Kayole, Kawangware, Isili...">
@@ -51,51 +51,33 @@
 </div>
 <button class="btn-search" onclick="doSearch()">TAFUTA NYUMBA</button>
 </div>
-<div class="free">FREE TRIAL: Weka nyumba 3 BURE! <span id="freeT"></span></div>
+<div class="free" id="freeT">💚 FREE FOR NOW: Weka nyumba zako bure - Hakuna malipo kwa sasa! Tutarudisha kulipa tukipata clients wengi.</div>
 <div id="counter"></div>
 <div id="list"></div>
 <script>
-function gen(base, extraFn){
- let res=new Set();
- base.forEach(b=>{
-  res.add(b);
-  for(let i=1;i<=5;i++){ res.add(b+" Phase "+i); res.add(b+" Stage "+i); }
-  res.add(b+" Central"); res.add(b+" North"); res.add(b+" South"); res.add(b+" East"); res.add(b+" West");
- });
- if(extraFn) extraFn().forEach(x=>res.add(x));
- return Array.from(res);
-}
-const NairobiBase=["Dandora","Kayole","Kawangware","Kibera","Mathare","Eastleigh","Umoja","Buruburu","Donholm","Embakasi","Pipeline","Huruma","Korogocho","Kariobangi","Ruaraka","Baba Dogo","Zimmerman","Roysambu","Kasarani","Githurai","Mwiki","Kahawa","Clay City","Njiru","Ruai","Utawala","Komarock","Tassia","South B","South C","Langata","Karen","Lavington","Kilimani","Westlands","Parklands","Lucky Summer","Pangani","Majengo","Ziwani","Starehe","Ngara","Mbotela","Bahati","Maringo","Jericho","Harambee","Tena","Saika","Mowlem","Chokaa","Isili","Uruma","Madare","Dagoretti","Riruta","Kangemi"];
-const KisumuBase=["Milimani Kisumu","Nyalenda","Manyatta","Kondele","Mamboleo","Migosi","Dago","Kibos","Obunga","Bandani","Nyamasaria","Riat","Kanyakwar","Otonglo","Chiga","Kisian","Ahero","Awasi","Muhoroni","Maseno","Kombewa","Kolwa","Kajulu","Buoye","Car Wash","Polyview","Kasule"];
-const NakuruBase=["Section 58","Lanet","Free Area","Shabab","Kaptembwo","Rhonda","Kiamunyi","Menengai","Ngata","Mwariki","Kivumbini","Flamingo","Bondeni","Kaloleni","London","Pipeline Nakuru","Bahati","Dundori","Gilgil","Naivasha","Karagita","Mai Mahiu","Molo","Njoro","Elburgon","Rongai","Solai","Kuresoi","Mbaruk","Kabazi","Lake View","Viwandani"];
-function extraNairobi(){
- let a=[];
- for(let i=1;i<=20;i++){ a.push("Dandora Phase "+i); a.push("Kayole Phase "+i); a.push("Umoja "+i); }
- for(let i=1;i<=10;i++){ a.push("Buruburu Phase "+i); a.push("Komarock Phase "+i); a.push("Kawangware 46 Phase "+i); }
- return a;
-}
 let data={
- "Nairobi": gen(NairobiBase, extraNairobi).slice(0,260),
- "Kisumu": gen(KisumuBase, ()=>[]).slice(0,210),
- "Nakuru": gen(NakuruBase, ()=>[]).slice(0,205),
- "Mombasa": gen(["Nyali","Bamburi","Shanzu","Mtwapa","Kisauni","Likoni","Changamwe","Mikindani","Jomvu","Miritini","Magongo","Utange","Kadzandani"],()=>[]).slice(0,110),
- "Kiambu": gen(["Thika","Ruiru","Juja","Gatundu","Limuru","Kikuyu","Kinoo","Githurai","Membley","Kiambu Town"],()=>[]).slice(0,100),
- "Uasin Gishu": gen(["Eldoret CBD","Langas","Huruma Eldoret","Elgon View","Pioneer","Turbo"],()=>[]).slice(0,80),
- "Kajiado": gen(["Kitengela","Kiserian","Ongata Rongai","Ngong","Kajiado Town","Isinya"],()=>[]).slice(0,90),
- "Machakos": gen(["Mlolongo","Syokimau","Athi River","Machakos Town","Tala","Kangundo"],()=>[]).slice(0,80),
- "Kilifi": gen(["Kilifi Town","Malindi","Watamu","Mariakani","Mtwapa Kilifi"],()=>[]).slice(0,70)
+"Nairobi": ["Dandora","Kayole","Kawangware","Kibera","Mathare","Eastleigh","Umoja","Buruburu","Donholm","Embakasi","Pipeline","Huruma","Korogocho","Kariobangi","Ruaraka","Baba Dogo","Zimmerman","Roysambu","Kasarani","Githurai","Mwiki","Kahawa West","Kahawa Sukari","Clay City","Njiru","Ruai","Utawala","Komarock","Tassia","Fedha","Imara Daima","Syokimau","Mukuru","South B","South C","Nairobi West","Langata","Karen","Lavington","Kilimani","Kileleshwa","Westlands","Parklands","Highridge","Lucky Summer","Pangani","Majengo","Ziwani","Starehe","Ngara","Kariokor","Mbotela","Bahati","Maringo","Jericho","Harambee","Tena","Greenspan","Saika","Mowlem","Chokaa","Isili","Uruma","Madare","Dagoretti","Riruta","Uthiru","Kangemi","Mountain View","Loresho","Kitisuru","Runda","Gigiri","Rosslyn","Garden Estate","Thome","Marurui","Mirema","Roasters","Kahawa Wendani","Kahawa Garrison","Mwiki","Kasarani","Santack","Sunton","Mahiga","Hunters","Kwa Maji","Kwa Njenga","Kware","Transami","Avenue Park","Greenfields","Nyayo","Utawala","Joska","Kamulu","Kamumbi","Kangundo Road","Kayole Soweto","Kayole Junction","Kayole Matopeni","Kawangware Congo","Kawangware Gatina","Kawangware Waruku","Dagoretti Corner","Waithaka","Mutuini","Ngando","Riruta Satellite","Uthiru 87","Kinoo","Regen","Kikuyu Road","Kabiria","Kawangware Muslim","Kawangware KAG","Kibra Laini Saba","Kibra Soweto East","Kibra Makina","Kibra Woodley","Kibra Sarangombe","Kibera Laini Saba","Kibera Gatwekera","Kibera Kianda","Olympic","Ayany","Kibera Mashimoni","Kibera Lindi","Langata Freedom","Langata Royal Park","Langata Ngei","Otiende","Karen Plains","Karen Hardy","Langata Deliverance","Langata Southlands","Southlands","Madaraka","Mbagathi Way","Mbagathi","Highrise","Ngumo","Golf Course","Kibera Drive","Kilimani","Yaya","Adams Arcade","Jamhuri","Woodley","Kilimani","Kileleshwa","Lavington","Muthangari","Gitanga Road","Riara Road","James Gichuru","Dennis Pritt","Lenana Road","State House Road","Valley Arcade","Kilimani","Kawangware","Dagoretti","Mugumoini","Riruta","Uthiru","Kangemi","Mountain View","Loresho","Spring Valley","Kyuna","Lower Kabete","Kitisuru","New Muthaiga","Old Muthaiga","Muthaiga North","Thigiri","Nyari","Gigiri","Runda Evergreen","Runda Mumwe","Rosslyn Lone Tree","Runda Grove","Muthaiga Heights","Muthaiga North","Kiambu Road","Northern Bypass","Thindigua","Marurui","Roysambu","Mirema","Zimmerman","Canopy","Santack","Kahawa West","Kahawa Sukari","Kahawa Wendani","Kahawa Garrison","Mwiki","Sunton","Kasarani","Clay Works","Seasons","Garage","Imenti","Maji Mazuri","Kwa Maji","Hunters","Mahiga","Githurai 44","Githurai 45","Githurai Kimbo","Mwihoko","Githurai Mwiki","Kahawa West","Mwiki","Sunton","Kasarani","Mwiki","Mwiki"].filter((v,i,a)=>a.indexOf(v)===i).slice(0,260),
+
+"Kisumu": ["Milimani Kisumu","Nyalenda","Manyatta","Kondele","Mamboleo","Migosi","Dago","Kibos","Obunga","Bandani","Nyamasaria","Riat Hills","Kanyakwar","Otonglo","Chiga","Kisian","Makasembo","Ahero","Awasi","Muhoroni","Chemelil","Maseno","Kombewa","Kolwa","Kajulu","Kogony","Nyahera","Ojolla","Buoye","Car Wash","Polyview","Ezra Gumbe","Rabuor","Kasule","Kadero","Kiboswa","Kibos","Kiboswa","Kanyakwar","Nyalenda","Manyatta","Kondele","Mamboleo","Migosi","Nyawita","Nyalunya","Kolwa East","Kolwa Central","Kajulu East","Kajulu West","Kogony","Buoye","Kanyawegi","Manyatta","Nyalenda","Migosi","Mamboleo","Miwani","Chemelil","Muhoroni","Awasi","Ahero","Nyando","Katito","Pap Onditi","Sondu","Nyabondo","Koru","Kisumu CBD","Oginga Odinga Street","Jomo Kenyatta Highway","Kakamega Road","Nairobi Road Kisumu","Mamboleo","Migosi","Car Wash","Ezra Gumbe","Rabuor","Nyamasaria","Riat","Kisian","Kiboswa","Kanyakwar","Otonglo","Chiga","Buoye","Kogony","Kanyakwar","Kajulu","Kolwa","Manyatta","Nyalenda","Migosi","Mamboleo","Miwani","Chemelil","Muhoroni","Awasi","Ahero","Nyando","Katito","Pap Onditi","Sondu","Nyabondo","Koru","Kisumu CBD","Oginga Odinga Street","Jomo Kenyatta Highway","Kakamega Road","Nairobi Road Kisumu","Kibos","Kiboswa","Kanyakwar","Kogony","Nyahera","Ojolla","Buoye","Car Wash","Polyview","Ezra Gumbe","Rabuor","Nyamasaria","Riat","Kisian","Kiboswa","Kanyakwar","Nyalenda","Manyatta","Kondele","Mamboleo","Migosi","Dago","Kibos","Obunga","Bandani","Nyamasaria","Riat Hills","Kanyakwar","Otonglo","Chiga","Kisian","Makasembo","Ahero","Awasi","Muhoroni","Chemelil","Maseno","Kombewa","Kolwa","Kajulu","Kogony","Nyahera","Ojolla","Buoye","Car Wash","Polyview","Ezra Gumbe","Rabuor","Kasule","Kadero","Kiboswa","Kibos","Kiboswa","Kanyakwar","Nyalenda","Manyatta","Kondele","Mamboleo","Migosi","Nyawita","Nyalunya","Kolwa East","Kolwa Central","Kajulu East","Kajulu West"].filter((v,i,a)=>a.indexOf(v)===i).slice(0,210),
+
+"Nakuru": ["Section 58","Lanet","Free Area","Shabab","Kaptembwo","Rhonda","Kiamunyi","Menengai","Ngata","Mwariki","Kivumbini","Flamingo","Bondeni","Kaloleni","London","Pipeline Nakuru","Bahati","Dundori","Gilgil","Naivasha","Karagita","Mai Mahiu","Molo","Njoro","Elburgon","Rongai","Solai","Kuresoi","Mbaruk","Kabazi","Lake View","Viwandani","Milimani Nakuru","Naka","Lanet","Free Area","Shabab","Kaptembwo","Rhonda","Kiamunyi","Menengai","Ngata","Mwariki","Kivumbini","Flamingo","Bondeni","Kaloleni","London","Pipeline Nakuru","Kabachia","Kabarak","Bahati","Dundori","Subukia","Gilgil","Naivasha Town","Karagita","Mirema Naivasha","Mai Mahiu","Molo","Njoro","Elburgon","Rongai","Solai","Kuresoi","Olenguruone","Kabazi","Elementaita","Lake View","Viwandani","Biashara","Kapsabet","Menengai","Lanet","Free Area","Shabab","Kaptembwo","Mbaruk","Maiella","Kikopey","Longonot","Maai Mahiu","Mau Narok","Kiptororo","Keringet","Kuresoi","Molo","Elburgon","Rongai","Solai","Kabazi","Elementaita","Lake View","Viwandani","Biashara","Kapsabet","Menengai","Lanet","Free Area","Shabab","Kaptembwo","Mbaruk","Maiella","Kikopey","Longonot","Maai Mahiu","Mau Narok","Kiptororo","Keringet","Kuresoi","Molo","Elburgon","Rongai","Solai"].filter((v,i,a)=>a.indexOf(v)===i).slice(0,205),
+
+"Mombasa": ["Nyali","Bamburi","Shanzu","Mtwapa","Kisauni","Likoni","Changamwe","Mikindani","Jomvu","Miritini","Magongo","Utange","Kadzandani","Frere Town","Ziwa La Ngombe","Kisimani","Bofu","Mshomoroni","Kongowea","Kiembeni","Mtopanga","Tudor","Old Town Mombasa","Mtongwe","Shika Adabu","Port Reitz","Chaani","Mwakirunge","Junda","Bamburi Mwisho"],
+"Kiambu": ["Thika","Ruiru","Juja","Gatundu","Limuru","Kikuyu","Kinoo","Githurai","Membley","Kiambu Town","Makongeni Thika","Kiganjo","Witeithie","Githunguri","Tigoni","Banana","Gitaru","Wangige","Ndenderu","Kihara","Gachie","Muguga","Karuri","Ndumberi","Kirigiti"],
+"Uasin Gishu": ["Eldoret CBD","Langas","Huruma Eldoret","Elgon View","Pioneer","Turbo","Burnt Forest","Kesses","Ziwa","Moiben","Kipkaren","Kaptagat"],
+"Kajiado": ["Kitengela","Kiserian","Ongata Rongai","Ngong","Kajiado Town","Isinya","Namanga","Kajiado North","Kajiado South","Kajiado East"],
+"Machakos": ["Mlolongo","Syokimau","Athi River","Machakos Town","Tala","Kangundo","Mavoko","Kathiani"],
+"Kilifi": ["Kilifi Town","Malindi","Watamu","Mariakani","Mtwapa Kilifi","Kaloleni Kilifi","Ganze","Magarini"]
 };
-let otherCounties=["Kwale","Turkana","Siaya","Homa Bay","Kisii","Marsabit","Isiolo","Mandera","Kitui","Garissa","Embu","Meru","Nyeri","Bungoma","Kakamega","Busia","Migori","Narok","Kericho","Bomet","Samburu","West Pokot","Taita Taveta","Makueni","Wajir","Tana River","Lamu","Nyamira","Nandi","Baringo","Laikipia","Trans Nzoia","Vihiga","Kirinyaga","Muranga","Nyandarua","Tharaka Nithi"];
-otherCounties.forEach(c=>{
- if(!data[c]) data[c]=gen([c+" Town", c+" Central", c+" East", c+" West"],()=>[]).slice(0,30);
-});
+let others=["Kwale","Turkana","Siaya","Homa Bay","Kisii","Marsabit","Isiolo","Mandera","Kitui","Garissa","Embu","Meru","Nyeri","Bungoma","Kakamega","Busia","Migori","Narok","Kericho","Bomet","Samburu","West Pokot","Taita Taveta","Makueni","Wajir","Tana River","Lamu","Nyamira","Nandi","Baringo","Laikipia","Trans Nzoia","Vihiga","Kirinyaga","Muranga","Nyandarua","Tharaka Nithi"];
+others.forEach(c=>{ if(!data[c]) data[c]=[c+" Town", c+" Central", c+" East", c+" West", c+" Market", c+" Stage", c+" Junction"]; });
 let houses=[
 {county:"Nairobi",estate:"Mwiki",type:"Single - Mwiki",price:3500,owner:"John",img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600"},
-{county:"Kiambu",estate:"Ruiru",type:"Bedsitter - Ruiru",price:6500,owner:"Mama Njeri",img:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600"},
-{county:"Nairobi",estate:"Dandora Phase 1",type:"Single - Dandora",price:2500,owner:"Kamau",img:"https://images.unsplash.com/photo-1493809842364-78817add58d1?w=600"},
-{county:"Nairobi",estate:"Kayole Central",type:"Bedsitter - Kayole",price:5000,owner:"Asha",img:"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600"},
-{county:"Kisumu",estate:"Nyalenda A",type:"1BR - Nyalenda",price:6000,owner:"Omondi",img:"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600"},
-{county:"Nakuru",estate:"Lanet 1",type:"Bedsitter - Lanet",price:5500,owner:"Nakuru Owner",img:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600"}
+{county:"Nairobi",estate:"Baba Dogo",type:"Bedsitter - Baba Dogo",price:6500,owner:"Mama Njeri",img:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600"},
+{county:"Nairobi",estate:"Dandora",type:"Single - Dandora",price:2500,owner:"Kamau",img:"https://images.unsplash.com/photo-1493809842364-78817add58d1?w=600"},
+{county:"Nairobi",estate:"Kayole",type:"Bedsitter - Kayole",price:5000,owner:"Asha",img:"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600"},
+{county:"Kisumu",estate:"Nyalenda",type:"1BR - Nyalenda",price:6000,owner:"Omondi",img:"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600"},
+{county:"Nakuru",estate:"Lanet",type:"Bedsitter - Lanet",price:5500,owner:"Nakuru Owner",img:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600"}
 ];
 function fillCounty(){
  let sel=document.getElementById('county');
@@ -140,7 +122,6 @@ function updateCounter(){
  let tot=0; for(let k in data) tot+=data[k].length;
  document.getElementById('counter').textContent="INAONYESHA "+tot+"+ MITAA • 47 COUNTIES • Nairobi "+data["Nairobi"].length+" Kisumu "+data["Kisumu"].length+" Nakuru "+data["Nakuru"].length;
  document.getElementById('tot').textContent=tot+"+";
- document.getElementById('freeT').textContent=tot+" Mtaa zote ndani - Nairobi 260 Kisumu 210 Nakuru 205 - Hakuna kusahau!";
 }
 document.getElementById('county').addEventListener('change', function(){ fillLocations(this.value); doSearch(); });
 document.getElementById('location').addEventListener('change', doSearch);
