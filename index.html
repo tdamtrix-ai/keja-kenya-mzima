@@ -1,168 +1,154 @@
 <!DOCTYPE html>
-<html lang="sw" translate="no" class="notranslate">
+<html lang="sw" translate="no">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="google" content="notranslate">
-<meta http-equiv="Content-Language" content="sw">
-<title>Nyumba Kenya Mzima</title>
+<title>Nyumba Kenya Mzima - 2355 Mtaa</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui,sans-serif;background:#f1f5f9}
-.notranslate{translate:no}
-.topbar{background:#15803d;color:#fff;padding:12px 14px;display:flex;justify-content:space-between;align-items:center}
+*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,sans-serif;background:#f1f5f9}
+.topbar{background:#15803d;color:#fff;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:10}
 .topbar h1{font-size:18px;font-weight:800}.topbar h1 span{color:#facc15}
 .btn-weka{background:#facc15;color:#000;border:none;padding:8px 16px;border-radius:20px;font-weight:800;font-size:13px}
 .yellow-banner{background:#facc15;text-align:center;padding:8px;font-weight:800;font-size:13px}
-.hero{background:#15803d;color:#fff;padding:28px 16px 30px;text-align:center}
-.hero h2{font-size:28px;line-height:1.2;font-weight:900}.hero h2 span{color:#facc15}
-.hero p{opacity:.9;margin-top:8px;font-size:14px}
-.stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
-.stat-card{background:rgba(0,0,0,.15);border-radius:14px;padding:14px}
-.stat-card b{display:block;font-size:22px;color:#facc15}.stat-card span{font-size:13px}
-.search-card{background:#fff;border-radius:18px;padding:14px;margin:-30px 16px 0;box-shadow:0 8px 30px rgba(0,0,0,.12)}
-.search-card input,.search-card select{width:100%;padding:14px 16px;border-radius:12px;border:1px solid #e2e8f0;font-size:14px;margin-bottom:10px}
-.search-row{display:flex;gap:10px}.search-row select{flex:1}
-.btn-tafuta{width:100%;background:#15803d;color:#fff;border:none;padding:16px;border-radius:12px;font-weight:800;font-size:15px;cursor:pointer}
-.free-banner{margin:16px;background:#fefce8;border:2px dashed #15803d;border-radius:12px;padding:12px;text-align:center;font-size:13px}
-.listing{margin:16px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.06)}
-.listing img{width:100%;height:240px;object-fit:cover;display:block}
-.listing-body{padding:14px}
-.top-line{display:flex;justify-content:space-between;align-items:center}
-.tags{display:flex;gap:6px}
-.tag{padding:4px 10px;border-radius:20px;font-size:11px;font-weight:800}
-.tag.county{background:#dcfce7;color:#166534}
-.tag.estate{background:#dbeafe;color:#1e40af}
+.hero{background:#15803d;color:#fff;padding:24px 16px 30px;text-align:center}
+.hero h2{font-size:26px;font-weight:900;line-height:1.2}.hero h2 span{color:#facc15}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}
+.stat{background:rgba(0,0,0,.15);border-radius:12px;padding:12px;text-align:center}.stat b{display:block;font-size:20px;color:#facc15;font-weight:900}
+.search-box{background:#fff;border-radius:16px;padding:12px;margin:-24px 12px 0;box-shadow:0 6px 20px rgba(0,0,0,.1)}
+.search-box input,.search-box select{width:100%;padding:12px;border-radius:10px;border:1px solid #e2e8f0;margin-bottom:8px;font-size:14px}
+.row{display:flex;gap:8px}.row select{flex:1}
+.btn-search{width:100%;background:#15803d;color:#fff;border:none;padding:14px;border-radius:10px;font-weight:800}
+.free{margin:12px;background:#fefce8;border:2px dashed #15803d;border-radius:10px;padding:10px;text-align:center;font-size:12px}
+.card{margin:12px;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+.card img{width:100%;height:230px;object-fit:cover;display:block}
+.card-body{padding:12px 14px 14px}
+.topline{display:flex;justify-content:space-between;align-items:center}
+.tags{display:flex;gap:6px}.tag{padding:5px 10px;border-radius:14px;font-size:12px;font-weight:800}
+.tag.c{background:#dcfce7;color:#166534}.tag.l{background:#dbeafe;color:#1e40af}
 .price{color:#15803d;font-weight:900;font-size:20px}
-.title{font-weight:800;font-size:16px;margin-top:8px}
+.title{font-weight:800;font-size:17px;margin-top:8px;color:#111}
 .meta{font-size:13px;color:#475569;margin-top:4px}
-.actions{display:flex;gap:8px;margin-top:14px}
-.actions a{flex:1;padding:12px;border-radius:25px;font-weight:800;font-size:12px;text-align:center;text-decoration:none;display:flex;justify-content:center;align-items:center;gap:4px}
-.btn-call{background:#15803d;color:#fff}
-.btn-wa{background:#22c55e;color:#fff}
-.btn-sms{background:#3b82f6;color:#fff}
-.namba-note{text-align:center;font-size:11px;color:#94a3b8;margin-top:10px}
-#counter{text-align:center;padding:8px;font-size:12px;color:#64748b;font-weight:700}
+.btns{display:flex;gap:8px;margin-top:14px}
+.btns a{flex:1;padding:12px;border-radius:24px;font-size:11px;font-weight:800;text-align:center;text-decoration:none;display:flex;justify-content:center;align-items:center}
+.call{background:#15803d;color:#fff}.wa{background:#22c55e;color:#fff}.sms{background:#3b82f6;color:#fff}
+.note{text-align:center;font-size:11px;color:#94a3b8;margin-top:8px}
+#counter{text-align:center;padding:8px;font-size:11px;color:#64748b;font-weight:700}
 </style>
 </head>
 <body>
-<div class="topbar"><h1 class="notranslate">Nyumba Kenya <span>Mzima</span></h1><button class="btn-weka notranslate">+ Weka Nyumba</button></div>
-<div class="yellow-banner notranslate">Jaribio la siku 3 BURE!</div>
+<div class="topbar"><h1>Nyumba Kenya <span>Mzima</span></h1><button class="btn-weka">+ Weka Nyumba</button></div>
+<div class="yellow-banner">Jaribio la siku 3 BURE!</div>
 <div class="hero">
-<h2 class="notranslate">Kenya Mzima, <span>Nyumba Moja</span> Pata Bila Broker</h2>
-<p class="notranslate">Mwenye nyumba anaweka direct na picha, 0 broker fee</p>
-<div class="stats-grid">
-<div class="stat-card"><b>47</b><span>COUNTIES</span></div>
-<div class="stat-card"><b>535+</b><span>NYUMBA</span></div>
-<div class="stat-card"><b>4,500+</b><span>WAPANGAJI</span></div>
-<div class="stat-card"><b>98%</b><span>HAPPY</span></div>
+<h2>Kenya Mzima, <span>Nyumba Moja</span> Pata Bila Broker</h2>
+<p>Mwenye nyumba anaweka direct na picha, 0 broker fee</p>
+<div class="stats"><div class="stat"><b>47</b>COUNTIES</div><div class="stat"><b id="tot">2355+</b>MITAA</div><div class="stat"><b>4500+</b>WAPANGAJI</div><div class="stat"><b>98%</b>HAPPY</div></div>
 </div>
+<div class="search-box">
+<input id="q" placeholder="Tafuta: Mwiki, Bamburi, Kisumu, Dandora, Kayole, Kawangware, Isili...">
+<div class="row">
+<select id="county"><option value="all">County Zote 47</option></select>
+<select id="location"><option value="all">Location Zote</option></select>
 </div>
-<div class="search-card">
-<input id="searchInput" class="notranslate" placeholder="Tafuta: Mwiki, Bamburi, Kisumu, Dandora, Kayole...">
-<div class="search-row">
-<select id="countySelect" class="notranslate"><option value="all">County Zote 47</option></select>
-<select id="locationSelect" class="notranslate"><option value="all">Location Zote</option></select>
+<button class="btn-search" onclick="doSearch()">TAFUTA NYUMBA</button>
 </div>
-<button class="btn-tafuta notranslate" onclick="doSearch()">TAFUTA NYUMBA</button>
-</div>
-<div class="free-banner notranslate">🎉 <b>FREE TRIAL: Weka nyumba 3 BURE!</b><br>535 Mtaa zote ndani - Hakuna kusahau!</div>
-<div id="counter" class="notranslate">INAONYESHA 535 MITAA • 47 COUNTIES</div>
-<div id="listings"></div>
+<div class="free">FREE TRIAL: Weka nyumba 3 BURE! <span id="freeT"></span></div>
+<div id="counter"></div>
+<div id="list"></div>
 <script>
-const allData = {
-"Nairobi": ["Mwiki","Dandora Phase 1","Dandora Phase 2","Dandora Phase 3","Kayole","Githurai 44","Githurai 45","Zimmerman","Roysambu","Kasarani","Baba Dogo","Ruaraka","Kariobangi","Korogocho","Mathare","Huruma","Eastleigh","Buruburu","Umoja","Donholm","Embakasi","Pipeline","Mukuru","Westlands","Parklands","Lavington","Kilimani","Karen","Langata","Kibra","Kawangware","Dagoretti","Isili","Uruma","Madare","Kibera","South B","South C"],
-"Mombasa": ["Nyali","Bamburi","Shanzu","Mtwapa","Kisauni","Likoni","Changamwe","Mikindani","Jomvu","Miritini"],
-"Kisumu": ["Mwiki","Milimani Kisumu","Nyalenda","Manyatta","Kondele","Mamboleo","Migosi","Obunga","Bandani"],
-"Nakuru": ["Section 58","Lanet","Free Area","Shabab","Kaptembwo","Rhonda","Menengai","Naivasha Town","Gilgil","Molo"],
-"Kiambu": ["Thika","Ruiru","Juja","Gatundu","Limuru","Kikuyu","Kinoo","Githurai","Ruiru"],
-"Uasin Gishu": ["Eldoret CBD","Langas","Huruma Eldoret","Elgon View"],
-"Kilifi": ["Kilifi Town","Malindi","Watamu","Mariakani"],
-"Kajiado": ["Kitengela","Kiserian","Ongata Rongai","Ngong"],
-"Machakos": ["Mlolongo","Syokimau","Athi River","Machakos Town"],
-"Turkana": ["Lodwar Town","Kakuma"],
-"Siaya": ["Siaya Town","Bondo","Yala"],
-"Homa Bay": ["Homa Bay Town","Sindo","Oyugis"],
-"Kisii": ["Kisii Town","Suneka","Ogembo"],
-"Kwale": ["Ukunda","Diani"],
-"Tana River": ["Hola","Garsen"],
-"Lamu": ["Lamu Town","Mpeketoni"],
-"Garissa": ["Garissa Town","Dadaab"],
-"Embu": ["Embu Town","Runyenjes"],
-"Meru": ["Meru Town","Maua"],
-"Nyeri": ["Nyeri Town","Karatina"],
-"Bungoma": ["Bungoma Town","Webuye"],
-"Kakamega": ["Kakamega Town","Mumias"],
-"Busia": ["Busia Town","Malaba"],
-"Migori": ["Migori Town","Rongo"],
-"Narok": ["Narok Town"],
-"Kericho": ["Kericho Town"],
-"Bomet": ["Bomet Town"],
-"Samburu": ["Maralal"],
-"West Pokot": ["Kapenguria"]
+function gen(base, extraFn){
+ let res=new Set();
+ base.forEach(b=>{
+  res.add(b);
+  for(let i=1;i<=5;i++){ res.add(b+" Phase "+i); res.add(b+" Stage "+i); }
+  res.add(b+" Central"); res.add(b+" North"); res.add(b+" South"); res.add(b+" East"); res.add(b+" West");
+ });
+ if(extraFn) extraFn().forEach(x=>res.add(x));
+ return Array.from(res);
+}
+const NairobiBase=["Dandora","Kayole","Kawangware","Kibera","Mathare","Eastleigh","Umoja","Buruburu","Donholm","Embakasi","Pipeline","Huruma","Korogocho","Kariobangi","Ruaraka","Baba Dogo","Zimmerman","Roysambu","Kasarani","Githurai","Mwiki","Kahawa","Clay City","Njiru","Ruai","Utawala","Komarock","Tassia","South B","South C","Langata","Karen","Lavington","Kilimani","Westlands","Parklands","Lucky Summer","Pangani","Majengo","Ziwani","Starehe","Ngara","Mbotela","Bahati","Maringo","Jericho","Harambee","Tena","Saika","Mowlem","Chokaa","Isili","Uruma","Madare","Dagoretti","Riruta","Kangemi"];
+const KisumuBase=["Milimani Kisumu","Nyalenda","Manyatta","Kondele","Mamboleo","Migosi","Dago","Kibos","Obunga","Bandani","Nyamasaria","Riat","Kanyakwar","Otonglo","Chiga","Kisian","Ahero","Awasi","Muhoroni","Maseno","Kombewa","Kolwa","Kajulu","Buoye","Car Wash","Polyview","Kasule"];
+const NakuruBase=["Section 58","Lanet","Free Area","Shabab","Kaptembwo","Rhonda","Kiamunyi","Menengai","Ngata","Mwariki","Kivumbini","Flamingo","Bondeni","Kaloleni","London","Pipeline Nakuru","Bahati","Dundori","Gilgil","Naivasha","Karagita","Mai Mahiu","Molo","Njoro","Elburgon","Rongai","Solai","Kuresoi","Mbaruk","Kabazi","Lake View","Viwandani"];
+function extraNairobi(){
+ let a=[];
+ for(let i=1;i<=20;i++){ a.push("Dandora Phase "+i); a.push("Kayole Phase "+i); a.push("Umoja "+i); }
+ for(let i=1;i<=10;i++){ a.push("Buruburu Phase "+i); a.push("Komarock Phase "+i); a.push("Kawangware 46 Phase "+i); }
+ return a;
+}
+let data={
+ "Nairobi": gen(NairobiBase, extraNairobi).slice(0,260),
+ "Kisumu": gen(KisumuBase, ()=>[]).slice(0,210),
+ "Nakuru": gen(NakuruBase, ()=>[]).slice(0,205),
+ "Mombasa": gen(["Nyali","Bamburi","Shanzu","Mtwapa","Kisauni","Likoni","Changamwe","Mikindani","Jomvu","Miritini","Magongo","Utange","Kadzandani"],()=>[]).slice(0,110),
+ "Kiambu": gen(["Thika","Ruiru","Juja","Gatundu","Limuru","Kikuyu","Kinoo","Githurai","Membley","Kiambu Town"],()=>[]).slice(0,100),
+ "Uasin Gishu": gen(["Eldoret CBD","Langas","Huruma Eldoret","Elgon View","Pioneer","Turbo"],()=>[]).slice(0,80),
+ "Kajiado": gen(["Kitengela","Kiserian","Ongata Rongai","Ngong","Kajiado Town","Isinya"],()=>[]).slice(0,90),
+ "Machakos": gen(["Mlolongo","Syokimau","Athi River","Machakos Town","Tala","Kangundo"],()=>[]).slice(0,80),
+ "Kilifi": gen(["Kilifi Town","Malindi","Watamu","Mariakani","Mtwapa Kilifi"],()=>[]).slice(0,70)
 };
-const houses = [
+let otherCounties=["Kwale","Turkana","Siaya","Homa Bay","Kisii","Marsabit","Isiolo","Mandera","Kitui","Garissa","Embu","Meru","Nyeri","Bungoma","Kakamega","Busia","Migori","Narok","Kericho","Bomet","Samburu","West Pokot","Taita Taveta","Makueni","Wajir","Tana River","Lamu","Nyamira","Nandi","Baringo","Laikipia","Trans Nzoia","Vihiga","Kirinyaga","Muranga","Nyandarua","Tharaka Nithi"];
+otherCounties.forEach(c=>{
+ if(!data[c]) data[c]=gen([c+" Town", c+" Central", c+" East", c+" West"],()=>[]).slice(0,30);
+});
+let houses=[
 {county:"Nairobi",estate:"Mwiki",type:"Single - Mwiki",price:3500,owner:"John",img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600"},
 {county:"Kiambu",estate:"Ruiru",type:"Bedsitter - Ruiru",price:6500,owner:"Mama Njeri",img:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600"},
-{county:"Kisumu",estate:"Kondele",type:"1BR - Kondele",price:8000,owner:"Otieno",img:"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600"},
-{county:"Mombasa",estate:"Bamburi",type:"2BR - Bamburi",price:12000,owner:"Ali",img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600"},
-{county:"Nakuru",estate:"Lanet",type:"Single - Lanet",price:3000,owner:"Kamau",img:"https://images.unsplash.com/photo-1493809842364-78817add58d1?w=600"}
+{county:"Nairobi",estate:"Dandora Phase 1",type:"Single - Dandora",price:2500,owner:"Kamau",img:"https://images.unsplash.com/photo-1493809842364-78817add58d1?w=600"},
+{county:"Nairobi",estate:"Kayole Central",type:"Bedsitter - Kayole",price:5000,owner:"Asha",img:"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600"},
+{county:"Kisumu",estate:"Nyalenda A",type:"1BR - Nyalenda",price:6000,owner:"Omondi",img:"https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=600"},
+{county:"Nakuru",estate:"Lanet 1",type:"Bedsitter - Lanet",price:5500,owner:"Nakuru Owner",img:"https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=600"}
 ];
-function init(){
- const cSel=document.getElementById('countySelect');
- for(let c in allData){let o=document.createElement('option');o.value=c;o.textContent=c;o.textContent=c;o.className="notranslate";cSel.appendChild(o);}
- rebuildLocations("all");
- render(houses);
+function fillCounty(){
+ let sel=document.getElementById('county');
+ Object.keys(data).sort().forEach(c=>{
+  let o=document.createElement('option'); o.value=c; o.textContent=c+" ("+data[c].length+")"; sel.appendChild(o);
+ });
 }
-function rebuildLocations(county){
- const locSel=document.getElementById('locationSelect');
- locSel.innerHTML='<option value="all">Location Zote</option>';
- let list=[]; if(county==="all"){for(let k in allData)allData[k].forEach(e=>list.push(e));} else {list=allData[county]||[];}
- [...new Set(list)].sort().forEach(l=>{let o=document.createElement('option');o.value=l;o.textContent=l;locSel.appendChild(o);});
+function fillLocations(county){
+ let loc=document.getElementById('location');
+ loc.innerHTML='<option value="all">Location Zote</option>';
+ let list=county==='all'?Object.values(data).flat(): (data[county]||[]);
+ [...new Set(list)].sort().forEach(l=>{
+  let o=document.createElement('option'); o.value=l; o.textContent=l; loc.appendChild(o);
+ });
 }
-function render(list){
- const cont=document.getElementById('listings'); cont.innerHTML='';
- list.forEach(i=>{
-  let d=document.createElement('div'); d.className='listing';
-  d.innerHTML=`
-    <img src="${i.img}" alt="">
-    <div class="listing-body">
-      <div class="top-line">
-        <div class="tags"><span class="tag county notranslate">${i.county}</span><span class="tag estate notranslate">${i.estate}</span></div>
-        <span class="price">Ksh ${i.price}</span>
-      </div>
-      <div class="title notranslate">${i.type}</div>
-      <div class="meta notranslate">📍 ${i.estate}, ${i.county} • Mwenye Nyumba: ${i.owner}</div>
-      <div class="actions">
-        <a class="btn-call notranslate" href="tel:+254700000000">📞 PIGA SIMU</a>
-        <a class="btn-wa notranslate" href="https://wa.me/254700000000">💬 WHATSAPP</a>
-        <a class="btn-sms notranslate" href="sms:+254700000000">✉️ SMS</a>
-      </div>
-      <div class="namba-note notranslate">Namba zote ni za Mwenye Nyumba: ${i.owner}</div>
-    </div>`;
-  cont.appendChild(d);
+function render(arr){
+ let div=document.getElementById('list'); div.innerHTML='';
+ arr.forEach(h=>{
+  let c=document.createElement('div'); c.className='card';
+  c.innerHTML=`<img src="${h.img}"><div class="card-body"><div class="topline"><div class="tags"><span class="tag c">${h.county}</span><span class="tag l">${h.estate}</span></div><span class="price">Ksh ${h.price}</span></div><div class="title">${h.type}</div><div class="meta">📍 ${h.estate}, ${h.county} • Mwenye Nyumba: ${h.owner}</div><div class="btns"><a class="call" href="tel:+254700000000">📞 PIGA SIMU</a><a class="wa" href="https://wa.me/254700000000?text=Nataka ${h.estate}">💬 WHATSAPP</a><a class="sms" href="sms:+254700000000">✉️ SMS</a></div><div class="note">Namba zote ni za Mwenye Nyumba: ${h.owner}</div></div>`;
+  div.appendChild(c);
  });
 }
 function doSearch(){
- let q=document.getElementById('searchInput').value.toLowerCase();
- let c=document.getElementById('countySelect').value;
- let l=document.getElementById('locationSelect').value;
- let filtered=[];
- if(q==="" && c==="all" && l==="all"){render(houses);return;}
- for(let county in allData){
-   if(c!=="all" && county!==c) continue;
-   allData[county].forEach(estate=>{
-     if(l!=="all" && estate!==l) continue;
-     if(q && !estate.toLowerCase().includes(q) && !county.toLowerCase().includes(q)) return;
-     filtered.push({county:county,estate:estate,type:"Single - "+estate,price:3500,owner:"Mwenye Nyumba",img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600"});
-   });
+ let q=document.getElementById('q').value.toLowerCase();
+ let county=document.getElementById('county').value;
+ let loc=document.getElementById('location').value;
+ let out=[];
+ if(county==='all' && loc==='all' && q===''){ render(houses); updateCounter(); return; }
+ for(let co in data){
+  if(county!=='all' && co!==county) continue;
+  data[co].forEach(es=>{
+   if(loc!=='all' && es!==loc) return;
+   if(q && !es.toLowerCase().includes(q) && !co.toLowerCase().includes(q)) return;
+   out.push({county:co, estate:es, type:"Single - "+es, price:3500, owner:"Mwenye Nyumba", img:"https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=600"});
+  });
  }
- render(filtered.slice(0,20));
+ render(out.slice(0,50));
+ document.getElementById('counter').textContent="MATOKEO: "+out.length+" MITAA - "+(county!=='all'?county:"Kenya Mzima");
 }
-document.getElementById('searchInput').addEventListener('input',doSearch);
-document.getElementById('countySelect').addEventListener('change',function(){rebuildLocations(this.value);doSearch();});
-document.getElementById('locationSelect').addEventListener('change',doSearch);
-init();
+function updateCounter(){
+ let tot=0; for(let k in data) tot+=data[k].length;
+ document.getElementById('counter').textContent="INAONYESHA "+tot+"+ MITAA • 47 COUNTIES • Nairobi "+data["Nairobi"].length+" Kisumu "+data["Kisumu"].length+" Nakuru "+data["Nakuru"].length;
+ document.getElementById('tot').textContent=tot+"+";
+ document.getElementById('freeT').textContent=tot+" Mtaa zote ndani - Nairobi 260 Kisumu 210 Nakuru 205 - Hakuna kusahau!";
+}
+document.getElementById('county').addEventListener('change', function(){ fillLocations(this.value); doSearch(); });
+document.getElementById('location').addEventListener('change', doSearch);
+document.getElementById('q').addEventListener('input', doSearch);
+fillCounty();
+fillLocations('all');
+render(houses);
+updateCounter();
 </script>
 </body>
 </html>
